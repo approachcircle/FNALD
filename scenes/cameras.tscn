@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlwjmyh16ktgn"]
+
+[ext_resource type="Script" path="res://scripts/Cameras.cs" id="1_oq0fp"]
+[ext_resource type="Texture2D" uid="uid://osj03sqkl62v" path="res://assets/camera_pane_frame.png" id="1_twtox"]
+[ext_resource type="Texture2D" uid="uid://ckv6k3l5y04wu" path="res://assets/recording.png" id="2_la5pt"]
+
+[node name="Cameras" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -2.0
+offset_right = 6.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oq0fp")
+
+[node name="Placeholder" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 2.0
+offset_right = 1914.0
+offset_bottom = 1082.0
+color = Color(0, 0, 0, 1)
+
+[node name="Frame" type="Sprite2D" parent="."]
+position = Vector2(944, 535.5)
+scale = Vector2(1.54687, 1.56528)
+texture = ExtResource("1_twtox")
+
+[node name="Recording" type="Sprite2D" parent="."]
+position = Vector2(1776.25, 127.75)
+scale = Vector2(0.249, 0.249)
+texture = ExtResource("2_la5pt")
+
+[node name="Flash" type="Timer" parent="."]
+autostart = true

@@ -1,0 +1,385 @@
+[gd_scene load_steps=37 format=3 uid="uid://d05axt35dwycy"]
+
+[ext_resource type="Script" path="res://scripts/Office.cs" id="1_2vpxb"]
+[ext_resource type="Texture2D" uid="uid://dpr3ctol3y8fo" path="res://assets/office2.jpeg" id="2_kw0ic"]
+[ext_resource type="Script" path="res://scripts/MonsterController.cs" id="2_mhjye"]
+[ext_resource type="Script" path="res://scripts/AngerController.cs" id="3_b1h8k"]
+[ext_resource type="Script" path="res://scripts/Phone.cs" id="3_xwq27"]
+[ext_resource type="Script" path="res://scripts/DistractionController.cs" id="4_smyoc"]
+[ext_resource type="PackedScene" uid="uid://dlwjmyh16ktgn" path="res://scenes/cameras.tscn" id="5_7lns7"]
+[ext_resource type="AudioStream" uid="uid://bswubqud3tjhy" path="res://assets/blip3.wav" id="5_mgrws"]
+[ext_resource type="Texture2D" uid="uid://cttqhpdy46kee" path="res://assets/camera_access_button.png" id="6_1lyvt"]
+[ext_resource type="Texture2D" uid="uid://bokaitd8ugfb0" path="res://assets/camera_flip_01.png" id="6_2t1jo"]
+[ext_resource type="AudioStream" uid="uid://bnc3d3gwgl4xb" path="res://assets/riser.wav" id="7_j36al"]
+[ext_resource type="LabelSettings" uid="uid://cwspocuyxley7" path="res://font_config.tres" id="7_tdkjq"]
+[ext_resource type="Texture2D" uid="uid://dmrqfxs0uwd6a" path="res://assets/camera_flip_02.png" id="7_ub42n"]
+[ext_resource type="Texture2D" uid="uid://dovwqi5n5ca2o" path="res://assets/camera_flip_03.png" id="8_chr1m"]
+[ext_resource type="Texture2D" uid="uid://b5ud45x6r4qe1" path="res://assets/camera_flip_04.png" id="9_jg2pn"]
+[ext_resource type="Texture2D" uid="uid://cc1synca74xft" path="res://assets/camera_flip_05.png" id="10_ju3vh"]
+[ext_resource type="Texture2D" uid="uid://dv4l6rytlhn1q" path="res://assets/camera_flip_06.png" id="11_nmo61"]
+[ext_resource type="Texture2D" uid="uid://dtrr3dj87tnls" path="res://assets/camera_flip_07.png" id="12_0a62f"]
+[ext_resource type="Texture2D" uid="uid://bkwpc2rx2gwn8" path="res://assets/camera_flip_08.png" id="13_43qev"]
+[ext_resource type="Texture2D" uid="uid://s7pd71ugsok7" path="res://assets/camera_flip_09.png" id="14_jdf3a"]
+[ext_resource type="Texture2D" uid="uid://c5caxug8pdl1p" path="res://assets/camera_flip_10.png" id="15_k0tik"]
+[ext_resource type="Texture2D" uid="uid://cntqsitdnjn0s" path="res://assets/camera_flip_11.png" id="16_5pga2"]
+[ext_resource type="PackedScene" uid="uid://cg4ht1piuigxq" path="res://scenes/anger_meter.tscn" id="19_cbf2q"]
+[ext_resource type="Texture2D" uid="uid://bn35b7x25orqt" path="res://assets/dist-1.png" id="24_3r8ho"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_534cf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_2t1jo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ub42n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_chr1m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jg2pn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ju3vh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nmo61")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0a62f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_43qev")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_jdf3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_k0tik")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_5pga2")
+}],
+"loop": false,
+"name": &"open_cams",
+"speed": 30.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a32qb"]
+size = Vector2(4369, 1081.25)
+
+[sub_resource type="Animation" id="Animation_51lak"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngerFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AngerMeter:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(59, 1041)]
+}
+
+[sub_resource type="Animation" id="Animation_luasd"]
+resource_name = "fade_in"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngerFade:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.278431)]
+}
+
+[sub_resource type="Animation" id="Animation_p116n"]
+resource_name = "move_meter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngerMeter:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(59, 1041), Vector2(767, 654)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_srwo8"]
+_data = {
+"RESET": SubResource("Animation_51lak"),
+"fade_in": SubResource("Animation_luasd"),
+"move_meter": SubResource("Animation_p116n")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_eebly"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lk5re"]
+font = SubResource("SystemFont_eebly")
+font_size = 60
+
+[sub_resource type="SystemFont" id="SystemFont_jbxjo"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6s6pl"]
+font = SubResource("SystemFont_jbxjo")
+font_size = 50
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dv7nc"]
+size = Vector2(85.412, 344.174)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qi37x"]
+size = Vector2(71.6246, 342.412)
+
+[node name="Office" type="Node2D"]
+script = ExtResource("1_2vpxb")
+
+[node name="OfficeImage" type="Sprite2D" parent="."]
+position = Vector2(964.893, 540.5)
+scale = Vector2(2.68367, 3.05367)
+texture = ExtResource("2_kw0ic")
+
+[node name="MonsterController" type="Node" parent="."]
+script = ExtResource("2_mhjye")
+
+[node name="AngerController" type="Node" parent="."]
+script = ExtResource("3_b1h8k")
+
+[node name="Phone" type="AudioStreamPlayer" parent="."]
+volume_db = -12.885
+script = ExtResource("3_xwq27")
+
+[node name="CamerasSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_mgrws")
+
+[node name="AngrySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_j36al")
+
+[node name="HUD" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="Camera" type="Camera2D" parent="HUD"]
+position = Vector2(960, 540)
+enabled = false
+
+[node name="Cameras" parent="HUD" instance=ExtResource("5_7lns7")]
+visible = false
+
+[node name="CamerasOpening" type="AnimatedSprite2D" parent="HUD"]
+visible = false
+position = Vector2(961.5, 541)
+scale = Vector2(1.49453, 1.50278)
+sprite_frames = SubResource("SpriteFrames_534cf")
+animation = &"open_cams"
+frame = 6
+frame_progress = 0.813969
+
+[node name="CamerasAccessButton" type="Sprite2D" parent="HUD"]
+position = Vector2(972, 983)
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("6_1lyvt")
+
+[node name="Collision" type="CollisionShape2D" parent="HUD"]
+visible = false
+position = Vector2(966, 545)
+shape = SubResource("RectangleShape2D_a32qb")
+
+[node name="AngerMeter" parent="HUD" instance=ExtResource("19_cbf2q")]
+offset_left = 59.0
+offset_top = 1041.0
+offset_right = 59.0
+offset_bottom = 1041.0
+
+[node name="Time" type="Label" parent="HUD"]
+offset_left = 75.0
+offset_top = 70.0
+offset_right = 245.0
+offset_bottom = 154.0
+text = "? AM"
+label_settings = ExtResource("7_tdkjq")
+
+[node name="AngerAnimation" type="AnimationPlayer" parent="HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_srwo8")
+}
+
+[node name="AngerFade" type="ColorRect" parent="HUD"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1923.0
+offset_bottom = 1088.0
+color = Color(1, 0, 0, 1)
+
+[node name="MuteButton" type="Button" parent="HUD"]
+offset_left = 1463.0
+offset_top = 190.0
+offset_right = 1829.0
+offset_bottom = 292.0
+
+[node name="MuteText" type="Label" parent="HUD"]
+offset_left = 1476.0
+offset_top = 216.0
+offset_right = 1812.0
+offset_bottom = 280.0
+text = "MUTE VOICE"
+label_settings = SubResource("LabelSettings_lk5re")
+
+[node name="GetAngry" type="Button" parent="HUD"]
+offset_left = 759.0
+offset_top = 302.0
+offset_right = 1161.0
+offset_bottom = 440.0
+
+[node name="AngryText" type="Label" parent="HUD"]
+offset_left = 781.0
+offset_top = 333.0
+offset_right = 1161.0
+offset_bottom = 417.0
+text = "Get Angry"
+label_settings = ExtResource("7_tdkjq")
+
+[node name="NextHour" type="Button" parent="HUD"]
+offset_left = 759.0
+offset_top = 630.0
+offset_right = 1161.0
+offset_bottom = 768.0
+
+[node name="HourText" type="Label" parent="HUD"]
+offset_left = 781.0
+offset_top = 661.0
+offset_right = 1161.0
+offset_bottom = 745.0
+text = "Skip Hour"
+label_settings = ExtResource("7_tdkjq")
+
+[node name="MinutesOfHour" type="Label" parent="HUD"]
+offset_left = 78.0
+offset_top = 167.0
+offset_right = 772.0
+offset_bottom = 251.0
+text = "Time to next hour: ?"
+label_settings = ExtResource("7_tdkjq")
+
+[node name="DistractionController" type="Node" parent="."]
+script = ExtResource("4_smyoc")
+
+[node name="Distraction" type="Sprite2D" parent="DistractionController"]
+visible = false
+position = Vector2(2152, 271.238)
+rotation = -0.0406601
+scale = Vector2(0.992605, 0.937851)
+skew = 0.0541052
+texture = ExtResource("24_3r8ho")
+
+[node name="SkipButton" type="Button" parent="DistractionController"]
+visible = false
+offset_left = 2193.0
+offset_top = 528.0
+offset_right = 2400.0
+offset_bottom = 603.0
+
+[node name="Skip" type="Label" parent="DistractionController"]
+visible = false
+offset_left = 2210.0
+offset_top = 543.0
+offset_right = 2379.0
+offset_bottom = 597.0
+text = "Skip Ad"
+label_settings = SubResource("LabelSettings_6s6pl")
+
+[node name="DistractButton" type="Button" parent="DistractionController"]
+offset_left = 2088.0
+offset_top = 781.0
+offset_right = 2426.0
+offset_bottom = 898.0
+
+[node name="Distract" type="Label" parent="DistractionController"]
+offset_left = 2107.0
+offset_top = 802.0
+offset_right = 2390.0
+offset_bottom = 886.0
+text = "Distract"
+label_settings = ExtResource("7_tdkjq")
+
+[node name="Hitboxes" type="CanvasGroup" parent="."]
+visible = false
+z_index = 2
+
+[node name="SlowLeft" type="ColorRect" parent="Hitboxes"]
+offset_left = 246.0
+offset_right = 524.0
+offset_bottom = 1079.0
+color = Color(1, 0.462745, 0.666667, 1)
+
+[node name="SlowRight" type="ColorRect" parent="Hitboxes"]
+offset_left = 1398.0
+offset_right = 1676.0
+offset_bottom = 1079.0
+color = Color(1, 0.462745, 0.666667, 1)
+
+[node name="FastLeft" type="ColorRect" parent="Hitboxes"]
+offset_right = 245.0
+offset_bottom = 1079.0
+color = Color(0.941176, 0, 0.521569, 1)
+
+[node name="FastRight" type="ColorRect" parent="Hitboxes"]
+offset_left = 1673.0
+offset_right = 1918.0
+offset_bottom = 1081.0
+color = Color(0.941176, 0, 0.521569, 1)
+
+[node name="CameraAccess" type="ColorRect" parent="Hitboxes"]
+offset_left = 590.0
+offset_top = 953.0
+offset_right = 1358.0
+offset_bottom = 1080.0
+color = Color(0.803922, 0, 0.14902, 1)
+
+[node name="DebugCamera" type="Camera2D" parent="."]
+z_index = 10
+position = Vector2(975, 481)
+scale = Vector2(20, 20)
+enabled = false
+zoom = Vector2(0.254, 0.254)
+
+[node name="Limits" type="CanvasGroup" parent="."]
+
+[node name="LimitRight" type="StaticBody2D" parent="Limits"]
+
+[node name="Collision" type="CollisionShape2D" parent="Limits/LimitRight"]
+position = Vector2(4456, 535)
+scale = Vector2(3.167, 3.167)
+shape = SubResource("RectangleShape2D_dv7nc")
+
+[node name="LimitLeft" type="StaticBody2D" parent="Limits"]
+
+[node name="Collision" type="CollisionShape2D" parent="Limits/LimitLeft"]
+position = Vector2(-2469, 526)
+scale = Vector2(3.167, 3.167)
+shape = SubResource("RectangleShape2D_qi37x")
+
+[node name="Progression" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true

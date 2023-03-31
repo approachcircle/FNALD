@@ -1,0 +1,8 @@
+# Godot 4+ specific ignores
+.godot/
+
+# binary ignores
+data_*/
+*.exe
+*.pck
+export_presets.cfg

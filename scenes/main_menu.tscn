@@ -1,0 +1,228 @@
+[gd_scene load_steps=17 format=3 uid="uid://ch3v2ps0puj5u"]
+
+[ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_uxnci"]
+[ext_resource type="Texture2D" uid="uid://b85blk6sxh3tw" path="res://assets/logan_death.png" id="2_3oig7"]
+[ext_resource type="AudioStream" uid="uid://c0kk3yn2kosty" path="res://assets/lacrimosa.mp3" id="2_iijqt"]
+[ext_resource type="Texture2D" uid="uid://d27c1hpsyj7x1" path="res://assets/logan_inconsolable.png" id="3_qktsl"]
+[ext_resource type="LabelSettings" uid="uid://cwspocuyxley7" path="res://font_config.tres" id="4_ns7sv"]
+[ext_resource type="AudioStream" uid="uid://bswubqud3tjhy" path="res://assets/blip3.wav" id="5_8qejl"]
+
+[sub_resource type="SystemFont" id="SystemFont_aafht"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ynt0l"]
+font = SubResource("SystemFont_aafht")
+font_size = 128
+
+[sub_resource type="SystemFont" id="SystemFont_qbd0b"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_6j1ig"]
+font = SubResource("SystemFont_qbd0b")
+font_size = 54
+
+[sub_resource type="SystemFont" id="SystemFont_02nck"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cocur"]
+font = SubResource("SystemFont_02nck")
+font_size = 40
+
+[sub_resource type="SystemFont" id="SystemFont_i4bjb"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_sbrvn"]
+font = SubResource("SystemFont_i4bjb")
+font_size = 59
+
+[sub_resource type="SystemFont" id="SystemFont_024xp"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_3h8og"]
+font = SubResource("SystemFont_024xp")
+font_size = 85
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uxnci")
+
+[node name="BackgroundGlitch" type="Sprite2D" parent="."]
+position = Vector2(962.75, 542.25)
+scale = Vector2(5.5634, 5.63471)
+texture = ExtResource("2_3oig7")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(964, 543.5)
+scale = Vector2(3.49909, 3.54221)
+texture = ExtResource("3_qktsl")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -862.5
+offset_top = 101.0
+offset_right = 862.5
+offset_bottom = 233.0
+grow_horizontal = 2
+text = "Five nights at Logan Davison's"
+label_settings = SubResource("LabelSettings_ynt0l")
+
+[node name="Continue" type="CanvasGroup" parent="."]
+
+[node name="ContinueButton" type="Button" parent="Continue"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 66.0
+offset_top = 650.0
+offset_right = 477.0
+offset_bottom = 778.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContinueLabel" type="Label" parent="Continue"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 101.5
+offset_top = 676.0
+offset_right = 441.5
+offset_bottom = 752.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue
+"
+label_settings = ExtResource("4_ns7sv")
+
+[node name="Night" type="Label" parent="Continue"]
+offset_left = 69.0
+offset_top = 791.0
+offset_right = 332.0
+offset_bottom = 867.0
+text = "Night ?"
+label_settings = SubResource("LabelSettings_6j1ig")
+
+[node name="NewGame" type="CanvasGroup" parent="."]
+
+[node name="NewGameButton" type="Button" parent="NewGame"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 66.0
+offset_top = 888.0
+offset_right = 477.0
+offset_bottom = 1016.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NewGameLabel" type="Label" parent="NewGame"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 101.5
+offset_top = 914.0
+offset_right = 441.5
+offset_bottom = 990.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "New game"
+label_settings = ExtResource("4_ns7sv")
+
+[node name="Copyright" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -383.0
+offset_top = -56.0
+offset_right = -20.0
+offset_bottom = -12.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "2023 approachcircle"
+label_settings = SubResource("LabelSettings_cocur")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_iijqt")
+volume_db = -7.363
+
+[node name="Blip" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8qejl")
+
+[node name="GlitchTimer" type="Timer" parent="."]
+wait_time = 0.35
+
+[node name="ConfirmNewGame" type="CanvasGroup" parent="."]
+visible = false
+position = Vector2(-104, 8)
+
+[node name="Background" type="ColorRect" parent="ConfirmNewGame"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 675.0
+offset_top = 432.0
+offset_right = 1402.0
+offset_bottom = 761.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.270588, 0.270588, 0.270588, 1)
+
+[node name="Title" type="Label" parent="ConfirmNewGame"]
+offset_left = 712.0
+offset_top = 465.0
+offset_right = 1174.0
+offset_bottom = 510.0
+text = "Really start a new game?"
+label_settings = SubResource("LabelSettings_sbrvn")
+
+[node name="YesButton" type="Button" parent="ConfirmNewGame"]
+offset_left = 713.0
+offset_top = 619.0
+offset_right = 923.0
+offset_bottom = 719.0
+
+[node name="NoButton" type="Button" parent="ConfirmNewGame"]
+offset_left = 1160.0
+offset_top = 619.0
+offset_right = 1370.0
+offset_bottom = 719.0
+
+[node name="YesText" type="Label" parent="ConfirmNewGame"]
+offset_left = 758.0
+offset_top = 628.0
+offset_right = 887.0
+offset_bottom = 717.0
+text = "Yes"
+label_settings = SubResource("LabelSettings_3h8og")
+
+[node name="NoText" type="Label" parent="ConfirmNewGame"]
+offset_left = 1211.0
+offset_top = 628.0
+offset_right = 1317.0
+offset_bottom = 717.0
+text = "No"
+label_settings = SubResource("LabelSettings_3h8og")
+
+[connection signal="mouse_entered" from="NewGame/NewGameButton" to="." method="_on_new_game_hover"]
+[connection signal="pressed" from="NewGame/NewGameButton" to="." method="_on_new_game_pressed"]

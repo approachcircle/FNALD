@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg4ht1piuigxq"]
+
+[ext_resource type="Script" path="res://scripts/AngerMeter.cs" id="1_hqou3"]
+
+[sub_resource type="SystemFont" id="SystemFont_getr5"]
+font_names = PackedStringArray("Bahnschrift")
+subpixel_positioning = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_2waqe"]
+font = SubResource("SystemFont_getr5")
+font_size = 68
+
+[node name="AngerMeter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hqou3")
+
+[node name="Rate" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -108.0
+offset_right = 251.0
+offset_bottom = -24.0
+grow_vertical = 0
+text = "Rate: ?"
+label_settings = SubResource("LabelSettings_2waqe")
+
+[node name="Anger" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -201.0
+offset_right = 366.0
+offset_bottom = -117.0
+grow_vertical = 0
+text = "Anger: ?%"
+label_settings = SubResource("LabelSettings_2waqe")
+
+[node name="Increase" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

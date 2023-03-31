@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cak0a5fv5wffr"]
+
+[ext_resource type="Script" path="res://scripts/Jumpscare.cs" id="1_yr5t2"]
+[ext_resource type="Texture2D" uid="uid://be78ujna3b5no" path="res://assets/logan_rotoscope.jpg" id="2_8be2q"]
+[ext_resource type="AudioStream" uid="uid://xjpurocgb2y7" path="res://assets/XSCREAM.wav" id="3_0313b"]
+
+[node name="Jumpscare" type="Node2D"]
+script = ExtResource("1_yr5t2")
+
+[node name="Pause" type="Timer" parent="."]
+one_shot = true
+
+[node name="Logan" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(924, 438)
+scale = Vector2(0.863774, 0.512144)
+texture = ExtResource("2_8be2q")
+
+[node name="Scream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0313b")
+volume_db = -7.362
+
+[node name="Remaining" type="Timer" parent="."]

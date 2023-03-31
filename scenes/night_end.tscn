@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://d4javyj5231ki"]
+
+[ext_resource type="Script" path="res://scripts/NightEnd.cs" id="1_8g174"]
+[ext_resource type="AudioStream" uid="uid://s7jidbup5m4q" path="res://assets/night_end_jamie.mp3" id="1_f2363"]
+
+[sub_resource type="SystemFont" id="SystemFont_1u3db"]
+font_names = PackedStringArray("Monocraft")
+
+[sub_resource type="LabelSettings" id="LabelSettings_635t6"]
+font = SubResource("SystemFont_1u3db")
+font_size = 100
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kkkn"]
+size = Vector2(82.5, 205)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ynd8g"]
+size = Vector2(105, 42.5)
+
+[node name="NightEnd" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8g174")
+
+[node name="Chime" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_f2363")
+volume_db = -12.885
+autoplay = true
+
+[node name="Hours" type="RigidBody2D" parent="."]
+position = Vector2(-2, -104)
+freeze = true
+
+[node name="Hour" type="Label" parent="Hours"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 856.0
+offset_top = 488.0
+offset_right = 1015.0
+offset_bottom = 696.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "6
+5"
+label_settings = SubResource("LabelSettings_635t6")
+
+[node name="Collision" type="CollisionShape2D" parent="Hours"]
+visible = false
+position = Vector2(884.75, 589.5)
+shape = SubResource("RectangleShape2D_2kkkn")
+
+[node name="AM" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -52.0
+offset_right = 134.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "  AM"
+label_settings = SubResource("LabelSettings_635t6")
+
+[node name="TopCover" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 782.0
+offset_top = 302.0
+offset_right = 947.0
+offset_bottom = 478.0
+color = Color(0, 0, 0, 1)
+
+[node name="BottomCover" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 801.0
+offset_top = 591.0
+offset_right = 966.0
+offset_bottom = 767.0
+color = Color(0, 0, 0, 1)
+
+[node name="HourFloor" type="StaticBody2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="HourFloor"]
+position = Vector2(884.5, 713.75)
+shape = SubResource("RectangleShape2D_ynd8g")
+
+[node name="Pause" type="Timer" parent="."]
+autostart = true

@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://cwspocuyxley7"]
+
+[sub_resource type="SystemFont" id="SystemFont_wwc6b"]
+font_names = PackedStringArray("Bahnschrift")
+
+[resource]
+font = SubResource("SystemFont_wwc6b")
+font_size = 80
