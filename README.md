@@ -8,7 +8,9 @@ as of writing this, the game is still **unfinished**. this means that while it i
 if you would just like to test out the game, you can just run the project in Godot, but if you'd like a compiled executable, either check the releases page, or follow these build instructions.
 
 ## prerequisites
-the only required application is Godot 4, and once that's downloaded, you should be good to go.
+- Godot 4 
+- Bahnschrift font
+- dotnet
 
 ## compiling
 for these commands, "godot4.exe" or "godot4" is a placeholder for the path to your Godot 4 executable path. change it as you see fit. ensure you create a "bin" directory beforehand.
