@@ -2,11 +2,7 @@
 .godot/
 
 # binary ignores
-data_*/
-*.exe
-*.pck
-export_presets.cfg
-export.cfg
+bin/
 
 # visual studio ignores
 .vs/
