@@ -10,3 +10,6 @@ export.cfg
 
 # visual studio ignores
 .vs/
+
+# github stuff
+.github/
