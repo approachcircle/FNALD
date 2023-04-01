@@ -1,0 +1,23 @@
+name: "Code Analysis"
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+    
+jobs:
+  analyse:
+    name: "Analyse code quality"
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Run NuGet restore
+        run: dotnet restore
+        
+      - name: Run code analysis
+        uses: dotnet/code-analysis@main
+        id: code-analysis
+        with:
+          build-breaking: true
