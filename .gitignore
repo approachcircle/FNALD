@@ -7,3 +7,6 @@ data_*/
 *.pck
 export_presets.cfg
 export.cfg
+
+# visual studio ignores
+.vs/
