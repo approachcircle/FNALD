@@ -37,7 +37,9 @@ public partial class DistractionController : Node
 	{
 		if (!Global.Distracted && !Global.PlayerDisabled && !Global.PhoneActive)
 		{
-			Global.CamerasEnabled = false;
+            EmitSignal(nameof(Distracted));
+            Global.Distracted = true;
+            Global.CamerasEnabled = false;
 			int distNumber = new Random().Next(1, 6);
 			string path = $"res://assets/dist-{distNumber}.png";
 			dist.Texture = GD.Load<CompressedTexture2D>(path);
@@ -45,8 +47,7 @@ public partial class DistractionController : Node
 			GetNode<Label>("Skip").Visible = true;
 			skipButton.Visible = true;
 			Global.AngerRate++;
-			EmitSignal(nameof(Distracted));
-			Global.Distracted = true;
+			GetNode<AudioStreamPlayer>("DistractionSound").Play();
 		}
 	}
 
@@ -60,6 +61,7 @@ public partial class DistractionController : Node
 			skipButton.Visible = false;
 			Global.Distracted = false;
 			Global.AngerRate--;
-		}
+            GetNode<AudioStreamPlayer>("DistractionSound").Stop();
+        }
 	}
 }

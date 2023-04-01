@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://d05axt35dwycy"]
+[gd_scene load_steps=38 format=3 uid="uid://d05axt35dwycy"]
 
 [ext_resource type="Script" path="res://scripts/Office.cs" id="1_2vpxb"]
 [ext_resource type="Texture2D" uid="uid://dpr3ctol3y8fo" path="res://assets/office2.jpeg" id="2_kw0ic"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cntqsitdnjn0s" path="res://assets/camera_flip_11.png" id="16_5pga2"]
 [ext_resource type="PackedScene" uid="uid://cg4ht1piuigxq" path="res://scenes/anger_meter.tscn" id="19_cbf2q"]
 [ext_resource type="Texture2D" uid="uid://bn35b7x25orqt" path="res://assets/dist-1.png" id="24_3r8ho"]
+[ext_resource type="AudioStream" uid="uid://cwvo62gfp6wa" path="res://assets/musicbox.wav" id="25_r8bew"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_534cf"]
 animations = [{
@@ -247,12 +248,14 @@ text = "MUTE VOICE"
 label_settings = SubResource("LabelSettings_lk5re")
 
 [node name="GetAngry" type="Button" parent="HUD"]
+visible = false
 offset_left = 759.0
 offset_top = 302.0
 offset_right = 1161.0
 offset_bottom = 440.0
 
 [node name="AngryText" type="Label" parent="HUD"]
+visible = false
 offset_left = 781.0
 offset_top = 333.0
 offset_right = 1161.0
@@ -261,12 +264,14 @@ text = "Get Angry"
 label_settings = ExtResource("7_tdkjq")
 
 [node name="NextHour" type="Button" parent="HUD"]
+visible = false
 offset_left = 759.0
 offset_top = 630.0
 offset_right = 1161.0
 offset_bottom = 768.0
 
 [node name="HourText" type="Label" parent="HUD"]
+visible = false
 offset_left = 781.0
 offset_top = 661.0
 offset_right = 1161.0
@@ -275,6 +280,7 @@ text = "Skip Hour"
 label_settings = ExtResource("7_tdkjq")
 
 [node name="MinutesOfHour" type="Label" parent="HUD"]
+visible = false
 offset_left = 78.0
 offset_top = 167.0
 offset_right = 772.0
@@ -310,18 +316,23 @@ text = "Skip Ad"
 label_settings = SubResource("LabelSettings_6s6pl")
 
 [node name="DistractButton" type="Button" parent="DistractionController"]
+visible = false
 offset_left = 2088.0
 offset_top = 781.0
 offset_right = 2426.0
 offset_bottom = 898.0
 
 [node name="Distract" type="Label" parent="DistractionController"]
+visible = false
 offset_left = 2107.0
 offset_top = 802.0
 offset_right = 2390.0
 offset_bottom = 886.0
 text = "Distract"
 label_settings = ExtResource("7_tdkjq")
+
+[node name="DistractionSound" type="AudioStreamPlayer" parent="DistractionController"]
+stream = ExtResource("25_r8bew")
 
 [node name="Hitboxes" type="CanvasGroup" parent="."]
 visible = false
