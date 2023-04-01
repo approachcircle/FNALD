@@ -45,21 +45,21 @@ public partial class DistractionController : Node
 			GetNode<Label>("Skip").Visible = true;
 			skipButton.Visible = true;
 			Global.AngerRate++;
-            		EmitSignal(nameof(Distracted));
-            		Global.Distracted = true;
-        	}
+			EmitSignal(nameof(Distracted));
+			Global.Distracted = true;
+		}
 	}
 
 	private void StopDistract()
 	{
 		if (Global.Distracted)
 		{
-            		Global.CamerasEnabled = true;
-            		dist.Visible = false;
-            		GetNode<Label>("Skip").Visible = false;
-            		skipButton.Visible = false;
-            		Global.Distracted = false;
-            		Global.AngerRate--;
-        	}
+			Global.CamerasEnabled = true;
+			dist.Visible = false;
+			GetNode<Label>("Skip").Visible = false;
+			skipButton.Visible = false;
+			Global.Distracted = false;
+			Global.AngerRate--;
+		}
 	}
 }
