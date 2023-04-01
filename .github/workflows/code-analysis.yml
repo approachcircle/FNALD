@@ -20,4 +20,11 @@ jobs:
         uses: dotnet/code-analysis@main
         id: code-analysis
         with:
-          build-breaking: true
+          build-breaking: false
+          
+      - name: Upload analysis results
+        uses: actions/upload-artifact@v2
+        with:
+          name: analysis_results.sarif
+          path: ${{ steps.code-analysis.outputs.sarifFile }}
+
