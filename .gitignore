@@ -6,3 +6,8 @@ bin/
 
 # visual studio ignores
 .vs/
+
+# planning, concept stuff
+assets/*.rtf
+assets/*.odt
+assets/*.psd
