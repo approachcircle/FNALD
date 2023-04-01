@@ -17,7 +17,7 @@ jobs:
         run: dotnet restore
         
       - name: Run code analysis
-        uses: dotnet/code-analysis@main
+        uses: dotnet/code-analysis@v1
         id: code-analysis
         with:
           build-breaking: false
