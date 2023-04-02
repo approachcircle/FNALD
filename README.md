@@ -1,5 +1,5 @@
 # FNALD
-a game heavily based off of Five Nights at Freddy's, except it's basically just an inside joke between friends. enjoy!
+a game heavily based off of Five Nights at Freddy's, except it's basically just an inside joke between friends.
 
 # current status
 as of writing this, the game is still **unfinished**. this means that while it is playable, it's still lacking some core features and may/may not have an end goal.
