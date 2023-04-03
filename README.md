@@ -14,7 +14,7 @@ if you would just like to test out the game, you can just run the project in God
 - a folder named `bin` in the project directory
 
 ## compiling
-for these commands, `godot4.exe` or `godot4` is a placeholder for the path to your Godot 4 executable path, therefore change it as you must.
+for these commands, `godot4.exe` or `godot4` is a placeholder for the path to your Godot 4 executable path, therefore change it if you must.
 | operating system | command |
 |------------------|---------|
 | Windows (debug) | `godot4.exe --export-debug Windows --headless`
