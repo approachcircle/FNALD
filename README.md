@@ -17,8 +17,8 @@ if you would just like to test out the game, you can just run the project in God
 for these commands, `godot4.exe` or `godot4` is a placeholder for the path to your Godot 4 executable path, therefore change it as you must.
 | operating system | command |
 |------------------|---------|
-| Windows | `godot4.exe --export-(debug/release) Windows bin/FiveNightsAtLoganDavisons.exe`
-| Linux/X11 | `godot4 --export-(debug/release) Linux bin/FiveNightsAtLoganDavisons`
+| Windows | `godot4.exe --export-(debug/release) Windows bin/FiveNightsAtLoganDavisons.exe --headlesss`
+| Linux/X11 | `godot4 --export-(debug/release) Linux bin/FiveNightsAtLoganDavisons --headless`
 
 ## running
 simply execute the compiled executable in either the `bin` folder, or execute the release executable.
