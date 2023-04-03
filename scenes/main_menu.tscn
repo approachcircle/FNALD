@@ -223,6 +223,3 @@ offset_right = 1317.0
 offset_bottom = 717.0
 text = "No"
 label_settings = SubResource("LabelSettings_3h8og")
-
-[connection signal="mouse_entered" from="NewGame/NewGameButton" to="." method="_on_new_game_hover"]
-[connection signal="pressed" from="NewGame/NewGameButton" to="." method="_on_new_game_pressed"]
