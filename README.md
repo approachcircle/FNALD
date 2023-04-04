@@ -22,7 +22,7 @@ for these commands, `godot4.exe` or `godot4` is a placeholder for the path to yo
 | Linux/X11 (debug) | `godot4 --export-debug Linux --headless`
 | Linux/X11 (release) | `godot4 --export-release Linux --headless`
 
-you are welcome to create a makefile to automate this compilation process, and an ignore for any makefiles has been setup inthe `.gitignore` file, so those changes will not be tracked.
+you are welcome to create a makefile to automate this compilation process. the gitignore contains rules for makefiles, so those changes will not be tracked.
 
 ## running
 simply execute the compiled executable in either the `bin` folder, or execute the release executable.
