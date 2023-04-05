@@ -23,6 +23,7 @@ public class Global
 	public static double RemainingTime { get; set; } = 0;
 	public static bool CamerasEnabled { get; set; } = true;
 	public static bool Distracted { get; set; } = false;
+	public static bool MonstersEnabled { get; set; } = true;
 	public static int CalculateHostilityIncrease()
 	{
 		return 90 * (int) GetNight();
@@ -53,7 +54,8 @@ public class Global
 		}
 	}
 
-	public static void ModulateNodeAlpha(CanvasItem node, float alpha) {
+	public static void ModulateNodeAlpha(CanvasItem node, float alpha)
+	{
 		Color colour = node.Modulate;
 		colour.A = alpha;
 		node.Modulate = colour;
