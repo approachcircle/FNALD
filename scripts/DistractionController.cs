@@ -25,7 +25,7 @@ public partial class DistractionController : Node
 
 	private void Roll()
 	{
-		int max = 1500;
+		int max = 2000;
 		int result = new Random().Next(0, max);
 		if (result == max / 2)
 		{
