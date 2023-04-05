@@ -19,7 +19,6 @@ public partial class Office : Node2D
 	RigidBody2D HUD;
 	CanvasGroup hitboxes;
 	Timer progression;
-	// Button skipDist;
 	int physCameraIndex = 0;
 	bool canScrollLeft = true;
 	bool canScrollRight = true;
@@ -35,8 +34,7 @@ public partial class Office : Node2D
 		fastSpeed = slowSpeed * 1.5f;
 		hitboxes = GetNode<CanvasGroup>("Hitboxes");
 		HUD = GetNode<RigidBody2D>("HUD");
-		progression = GetNode<Timer>("Progression");
-		// skipDist = GetNode<Button>("");
+        progression = GetNode<Timer>("Progression");
 		hitboxes.Visible = true;
 		Global.ModulateNodeAlpha(hitboxes, 0);
 		physCameras.Add(GetNode<Camera2D>("HUD/Camera"));
