@@ -23,7 +23,6 @@ public partial class Office : Node2D
 	bool canScrollLeft = true;
 	bool canScrollRight = true;
 	bool hovering = false;
-	int monsterMoveCount = 0;
 
 	public override void _Ready()
 	{
@@ -34,7 +33,7 @@ public partial class Office : Node2D
 		fastSpeed = slowSpeed * 1.5f;
 		hitboxes = GetNode<CanvasGroup>("Hitboxes");
 		HUD = GetNode<RigidBody2D>("HUD");
-        progression = GetNode<Timer>("Progression");
+		progression = GetNode<Timer>("Progression");
 		hitboxes.Visible = true;
 		Global.ModulateNodeAlpha(hitboxes, 0);
 		physCameras.Add(GetNode<Camera2D>("HUD/Camera"));
