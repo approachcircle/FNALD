@@ -1,19 +1,49 @@
 ﻿using Godot;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public abstract class Monster
 {
-/*    [Signal]
-    public delegate void MonsterMovedEventHandler();*/
+    public abstract string Name { get; protected set; }
 
-    public string Name { get; set; } = "Monster";
+    public virtual Direction Direction { get; protected set; } = Direction.Forward;
 
+    public virtual Room Room { get; protected set; } = Room.Stage;
 
-    public Room Room { get; set; } = Room.Stage;
+    public int Hostility { get; protected set; } = 300;
 
-    public int Hostility { get; set; } = 0;
-    public Room Destination { get; set; } = Room.Stage;
+    public virtual int Neutrality { get; protected set; } = 500;
 
-    public abstract bool Roll();
+    public virtual bool Roll()
+    {
+        if (new Random().Next(1, Hostility) == Hostility / 2)
+        {
+            if (Room == Room.Office) { return false; }
+            Direction = Direction.Forward;
+            return true;
+        }
+        else if (new Random().Next(1, Neutrality) == Neutrality / 2)
+        {
+            if (Room == Room.Stage) return false;
+            Direction = Direction.Backward;
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
 
-    public abstract void SetDestination();
+    public virtual void Move(Direction direction)
+    {
+        List<Room> rooms = Enum.GetValues<Room>().ToList();
+        if (direction == Direction.Forward)
+        {
+            Room = rooms[rooms.IndexOf(Room) + 1];
+        }
+        else
+        {
+            Room = rooms[rooms.IndexOf(Room) - 1];
+        }
+    }
 }
