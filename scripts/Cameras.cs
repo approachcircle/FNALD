@@ -16,10 +16,10 @@ public partial class Cameras : Control
 
 	private void FlashLight()
 	{
-        Sprite2D recording = GetNode<Sprite2D>("Recording");
-        if (light_visible)
-            Global.ModulateNodeAlpha(recording, 1);
-        else
-            Global.ModulateNodeAlpha(recording, 0);
-    }
+		Sprite2D recording = GetNode<Sprite2D>("Recording");
+		if (lightVisible)
+			Global.ModulateNodeAlpha(recording, 1);
+		else
+			Global.ModulateNodeAlpha(recording, 0);
+	}
 }
