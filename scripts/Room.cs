@@ -1,10 +1,10 @@
 ﻿public enum Room
 {
-    Office,
-    A1,
-    A2,
+    Stage,
     B1,
     B2,
-    Stage
+    A1,
+    A2,
+    Office
 }
 
