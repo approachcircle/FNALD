@@ -45,14 +45,12 @@ public class Global
 	{
 		if (!FileAccess.FileExists(DataPath))
 			SetNight(1);
-		using (FileAccess file = FileAccess.Open(DataPath, FileAccess.ModeFlags.Read))
-		{
-			Variant data = Json.ParseString(file.GetAsText());
-			if (data.VariantType is Variant.Type.Nil)
-				SetNight(1);
-			return data.AsGodotDictionary<string, long>().GetValueOrDefault("night");
-		}
-	}
+        using FileAccess file = FileAccess.Open(DataPath, FileAccess.ModeFlags.Read);
+        Variant data = Json.ParseString(file.GetAsText());
+        if (data.VariantType is Variant.Type.Nil)
+            SetNight(1);
+        return data.AsGodotDictionary<string, long>().GetValueOrDefault("night");
+    }
 
 	public static void ModulateNodeAlpha(CanvasItem node, float alpha)
 	{
