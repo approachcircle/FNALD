@@ -5,7 +5,7 @@ public partial class MonsterController : Node
 	[Signal]
 	public delegate void MonsterMovedEventHandler(string monsterName);
 
-	private static readonly Monster[] monsters = {
+	public static Monster[] Monsters { get; } = {
 		new Cameron(),
 		new Harry()
 	};
@@ -13,7 +13,6 @@ public partial class MonsterController : Node
 	public override void _Ready()
 	{
 		GetNode<Timer>("Movement").Timeout += RollMonsters;
-		MonsterMoved += (monsterName) => { GetNode<Label>("MoveList").Text += $"\n{monsterName}"; };
 	}
 
 	public override void _Process(double delta)
@@ -24,7 +23,7 @@ public partial class MonsterController : Node
 	private void RollMonsters()
 	{
 		if (!Global.MonstersEnabled) return;
-		foreach (Monster monster in monsters)
+		foreach (Monster monster in Monsters)
 		{
 			if (monster.Roll())
 			{
