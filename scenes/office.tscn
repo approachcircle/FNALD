@@ -168,6 +168,7 @@ script = ExtResource("2_mhjye")
 
 [node name="Movement" type="Timer" parent="MonsterController"]
 autostart = true
+
 [node name="AngerController" type="Node" parent="."]
 script = ExtResource("3_b1h8k")
 
