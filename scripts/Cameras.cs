@@ -11,7 +11,11 @@ public partial class Cameras : Control
 
 	public override void _Process(double delta)
 	{
-
+		string buffer = "Monsters:";
+		foreach (Monster monster in MonsterController.Monsters)
+			buffer += $"\n{monster.Name}: {monster.Room}";
+		GetNode<Label>("Rooms").Text = buffer;
+		FlashLight();
 	}
 
 	private void FlashLight()

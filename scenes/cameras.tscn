@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlwjmyh16ktgn"]
+[gd_scene load_steps=5 format=3 uid="uid://dlwjmyh16ktgn"]
 
 [ext_resource type="Script" path="res://scripts/Cameras.cs" id="1_oq0fp"]
 [ext_resource type="Texture2D" uid="uid://osj03sqkl62v" path="res://assets/camera_pane_frame.png" id="1_twtox"]
+[ext_resource type="LabelSettings" uid="uid://cwspocuyxley7" path="res://font_config.tres" id="2_2vswg"]
 [ext_resource type="Texture2D" uid="uid://ckv6k3l5y04wu" path="res://assets/recording.png" id="2_la5pt"]
 
 [node name="Cameras" type="Control"]
@@ -37,3 +38,12 @@ texture = ExtResource("2_la5pt")
 
 [node name="Flash" type="Timer" parent="."]
 autostart = true
+
+[node name="Rooms" type="Label" parent="."]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 171.0
+offset_right = 411.0
+offset_bottom = 255.0
+text = "Monsters:"
+label_settings = ExtResource("2_2vswg")
