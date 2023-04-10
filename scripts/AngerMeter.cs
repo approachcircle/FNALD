@@ -1,6 +1,4 @@
 using Godot;
-using System;
-
 public partial class AngerMeter : Control
 {
 	bool emitted = false;
