@@ -58,7 +58,7 @@ public abstract class Monster
 
     protected virtual void CalculateDifficulty()
     {
-        DynamicHostility = BaseHostility - (55 * (int)Global.GetNight());
+        DynamicHostility = BaseHostility - (45 * (int)Global.GetNight());
         DynamicNeutrality = BaseNeutrality + (20 * (int)Global.GetNight());
     }
 }
