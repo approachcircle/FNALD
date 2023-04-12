@@ -52,7 +52,7 @@ public abstract class Monster
 
     public virtual void Move(Direction direction)
     {
-        List<Room> rooms = Enum.GetValues<Room>().ToList();
+        var rooms = Room.GetRooms();
         if (direction == Direction.Forward)
             Room = rooms[rooms.IndexOf(Room) + 1];
         else
