@@ -24,7 +24,9 @@ public class Global
 	public static bool CamerasEnabled { get; set; } = true;
 	public static bool Distracted { get; set; } = false;
 	public static bool MonstersEnabled { get; set; } = true;
-	public static int CalculateHostilityIncrease()
+	public static bool MidDoorClosed { get; set; } = true;
+    public static bool LeftDoorClosed { get; set; } = true;
+    public static int CalculateHostilityIncrease()
 	{
 		return 90 * (int) GetNight();
 	}
