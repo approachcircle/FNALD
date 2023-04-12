@@ -12,7 +12,7 @@ using System.Collections.Generic;
 public partial class Office : Node2D
 {
 	[Export]
-	float slowSpeed = 700.0f;
+	float speed = 700.0f;
 	float fastSpeed;
 	float velocity = 1.0f;
 	List<Camera2D> physCameras = new List<Camera2D>();
@@ -20,9 +20,6 @@ public partial class Office : Node2D
 	CanvasGroup hitboxes;
 	Timer progression;
 	int physCameraIndex = 0;
-	bool canScrollLeft = true;
-	bool canScrollRight = true;
-	bool hovering = false;
 
 	public override void _Ready()
 	{
@@ -30,7 +27,8 @@ public partial class Office : Node2D
 		Global.PrematurePhoneEnd = false;
 		Global.InternalAnger = Global.StartInternalAnger;
 		Global.RemainingTime = 0;
-		fastSpeed = slowSpeed * 1.5f;
+		Global.MonstersEnabled = false;
+		fastSpeed = speed * 1.5f;
 		hitboxes = GetNode<CanvasGroup>("Hitboxes");
 		HUD = GetNode<RigidBody2D>("HUD");
 		progression = GetNode<Timer>("Progression");
@@ -77,49 +75,66 @@ public partial class Office : Node2D
 
 	public override void _PhysicsProcess(double delta)
 	{
-		if (Global.PlayerDisabled) return;
 		HandleScrolling(delta);
-		if (Global.CamerasEnabled)
-			HandleCameraAccess();
+		HandleCameraAccess();
 	}
 
 	private bool MouseIsOver(Control node)
 	{
-		Vector2 mousePosition = GetViewport().GetMousePosition();
+		Camera2D camera = physCameras[physCameraIndex];
+		Vector2 mousePosition = camera.GetViewport().GetMousePosition();
 		bool hasPoint = node.GetGlobalRect().HasPoint(mousePosition);
+		return hasPoint;
+	}
+
+	private bool MouseIsOverAny(Control[] nodes)
+	{
+		Camera2D camera = physCameras[physCameraIndex];
+		Vector2 mousePosition = camera.GetViewport().GetMousePosition();
+		bool hasPoint = false;
+		foreach (Control node in nodes)
+		{
+			hasPoint = node.GetGlobalRect().HasPoint(mousePosition);
+			if (hasPoint) break;
+		}
 		return hasPoint;
 	}
 
 	private void HandleScrolling(double delta)
 	{
+		if (Global.PlayerDisabled) return;
+		bool scrolling = false;
 		ColorRect slowLeft = hitboxes.GetNode<ColorRect>("SlowLeft");
 		ColorRect slowRight = hitboxes.GetNode<ColorRect>("SlowRight");
 		ColorRect fastLeft = hitboxes.GetNode<ColorRect>("FastLeft");
 		ColorRect fastRight = hitboxes.GetNode<ColorRect>("FastRight");
-		velocity = 1;
+		if (MouseIsOverAny(new Control[] { slowLeft, slowRight, fastLeft, fastRight }))
+			scrolling = true;
 		if (MouseIsOver(slowLeft))
-			velocity *= -slowSpeed;
-		if (MouseIsOver(slowRight))
-			velocity *= slowSpeed;
-		if (MouseIsOver(fastLeft))
-			velocity *= -fastSpeed;
-		if (MouseIsOver(fastRight))
-			velocity *= fastSpeed;
+			velocity = -speed;
+		else if (MouseIsOver(slowRight))
+			velocity = speed;
+		else if (MouseIsOver(fastLeft))
+			velocity = -fastSpeed;
+		else if (MouseIsOver(fastRight))
+			velocity = fastSpeed;
 		if (Global.Cameras is Global.CamerasState.Up)
 			velocity = 1;
-		HUD.MoveAndCollide(new Vector2((float)(velocity * delta), 0));
+		if (scrolling)
+			HUD.MoveAndCollide(new Vector2((float)(velocity * delta), 0));
 	}
 
 	private void HandleCameraAccess()
 	{
+		if (Global.PlayerDisabled || !Global.CamerasEnabled) return;
 		Sprite2D CAB = HUD.GetNode<Sprite2D>("CamerasAccessButton");
-		if (MouseIsOver(hitboxes.GetNode<ColorRect>("CameraAccess")) && !hovering) {
+		if (MouseIsOver(hitboxes.GetNode<ColorRect>("CameraAccess"))) {
 			if (CAB.Modulate.A == 0)
 				return;
 			ToggleCameras();
 			Global.ModulateNodeAlpha(CAB, 0);
 		}
-		else if (!MouseIsOver(hitboxes.GetNode<ColorRect>("CameraAccess")) && !hovering) {
+		else if (!MouseIsOver(hitboxes.GetNode<ColorRect>("CameraAccess"))) {
 			Global.ModulateNodeAlpha(CAB, 1);
 		}
 	}
