@@ -1,12 +1,14 @@
-[gd_scene load_steps=38 format=3 uid="uid://d05axt35dwycy"]
+[gd_scene load_steps=41 format=3 uid="uid://d05axt35dwycy"]
 
 [ext_resource type="Script" path="res://scripts/Office.cs" id="1_2vpxb"]
 [ext_resource type="Texture2D" uid="uid://dpr3ctol3y8fo" path="res://assets/office2.jpeg" id="2_kw0ic"]
 [ext_resource type="Script" path="res://scripts/MonsterController.cs" id="2_mhjye"]
 [ext_resource type="Script" path="res://scripts/AngerController.cs" id="3_b1h8k"]
+[ext_resource type="Texture2D" uid="uid://dh0tkdsxkjtr6" path="res://assets/door.png" id="3_i8lan"]
 [ext_resource type="Script" path="res://scripts/Phone.cs" id="3_xwq27"]
 [ext_resource type="Script" path="res://scripts/DistractionController.cs" id="4_smyoc"]
 [ext_resource type="PackedScene" uid="uid://dlwjmyh16ktgn" path="res://scenes/cameras.tscn" id="5_7lns7"]
+[ext_resource type="Script" path="res://scripts/DoorController.cs" id="5_l3pb3"]
 [ext_resource type="AudioStream" uid="uid://bswubqud3tjhy" path="res://assets/blip3.wav" id="5_mgrws"]
 [ext_resource type="Texture2D" uid="uid://cttqhpdy46kee" path="res://assets/camera_access_button.png" id="6_1lyvt"]
 [ext_resource type="Texture2D" uid="uid://bokaitd8ugfb0" path="res://assets/camera_flip_01.png" id="6_2t1jo"]
@@ -25,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://cg4ht1piuigxq" path="res://scenes/anger_meter.tscn" id="19_cbf2q"]
 [ext_resource type="Texture2D" uid="uid://bn35b7x25orqt" path="res://assets/dist-1.png" id="24_3r8ho"]
 [ext_resource type="AudioStream" uid="uid://cwvo62gfp6wa" path="res://assets/musicbox.wav" id="25_r8bew"]
+[ext_resource type="Texture2D" uid="uid://bv5kk08d2p5rk" path="res://assets/door_open.jpg" id="27_fy0o1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_534cf"]
 animations = [{
@@ -172,6 +175,51 @@ autostart = true
 
 [node name="AngerController" type="Node" parent="."]
 script = ExtResource("3_b1h8k")
+
+[node name="DoorController" type="Node" parent="."]
+script = ExtResource("5_l3pb3")
+
+[node name="MidDoor" type="TextureButton" parent="DoorController"]
+offset_left = 812.0
+offset_top = 1.0
+offset_right = 2301.0
+offset_bottom = 2783.0
+scale = Vector2(0.336634, 0.301632)
+texture_normal = ExtResource("27_fy0o1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LeftDoor" type="CanvasGroup" parent="DoorController"]
+position = Vector2(964.893, 540.5)
+scale = Vector2(2.68367, 3.05367)
+
+[node name="Door" type="Sprite2D" parent="DoorController/LeftDoor"]
+modulate = Color(0.870588, 0.870588, 0.870588, 1)
+position = Vector2(-689.501, -0.491226)
+scale = Vector2(0.425713, 0.40207)
+texture = ExtResource("3_i8lan")
+flip_h = true
+
+[node name="Door2" type="Sprite2D" parent="DoorController/LeftDoor"]
+self_modulate = Color(0.870588, 0.870588, 0.870588, 1)
+position = Vector2(-532.649, -0.491225)
+scale = Vector2(0.423589, 0.40207)
+texture = ExtResource("3_i8lan")
+
+[node name="ColorRect" type="ColorRect" parent="DoorController/LeftDoor"]
+modulate = Color(1, 1, 1, 0.478431)
+offset_left = -769.0
+offset_top = -178.0
+offset_right = -454.0
+offset_bottom = 176.0
+color = Color(0.219608, 0.184314, 0, 1)
+
+[node name="Clickable" type="Button" parent="DoorController/LeftDoor"]
+visible = false
+offset_left = -769.0
+offset_top = -179.0
+offset_right = -453.0
+offset_bottom = 175.0
 
 [node name="Phone" type="AudioStreamPlayer" parent="."]
 volume_db = -12.885
@@ -337,6 +385,9 @@ label_settings = ExtResource("7_tdkjq")
 
 [node name="DistractionSound" type="AudioStreamPlayer" parent="DistractionController"]
 stream = ExtResource("25_r8bew")
+
+[node name="Roller" type="Timer" parent="DistractionController"]
+autostart = true
 
 [node name="Hitboxes" type="CanvasGroup" parent="."]
 visible = false
