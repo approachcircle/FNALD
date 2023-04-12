@@ -335,7 +335,6 @@ offset_bottom = 176.0
 color = Color(0.219608, 0.184314, 0, 1)
 
 [node name="Clickable" type="Button" parent="DoorController/LeftDoor"]
-visible = false
 offset_left = -769.0
 offset_top = -179.0
 offset_right = -453.0
