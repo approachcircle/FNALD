@@ -9,8 +9,8 @@ public enum Room
     B2,
     A1,
     A2,
-    C1,
-    C2,
+    Mid,
+    Left,
     Office
 }
 public static class Extensions
