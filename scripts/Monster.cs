@@ -52,11 +52,26 @@ public abstract class Monster
 
     public virtual void Move(Direction direction)
     {
-        var rooms = Room.GetRooms();
         if (direction is Direction.Forward)
-            Room = rooms[rooms.IndexOf(Room) + 1];
+            Advance();
         else
-            Room = rooms[rooms.IndexOf(Room) - 1];
+            Regress();
+    }
+
+    protected virtual void Advance()
+    {
+        var rooms = Room.GetRooms();
+        Room = rooms[rooms.IndexOf(Room) + 1];
+    }
+    protected virtual void Regress()
+    {
+        var rooms = Room.GetRooms();
+        Room = rooms[rooms.IndexOf(Room) - 1];
+    }
+
+    protected virtual void Goto(Room room)
+    {
+        Room = room;
     }
 
     protected virtual void CalculateDifficulty()
