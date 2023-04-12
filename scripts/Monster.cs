@@ -53,7 +53,7 @@ public abstract class Monster
     public virtual void Move(Direction direction)
     {
         var rooms = Room.GetRooms();
-        if (direction == Direction.Forward)
+        if (direction is Direction.Forward)
             Room = rooms[rooms.IndexOf(Room) + 1];
         else
             Room = rooms[rooms.IndexOf(Room) - 1];
