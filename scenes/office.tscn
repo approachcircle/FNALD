@@ -176,51 +176,6 @@ autostart = true
 [node name="AngerController" type="Node" parent="."]
 script = ExtResource("3_b1h8k")
 
-[node name="DoorController" type="Node" parent="."]
-script = ExtResource("5_l3pb3")
-
-[node name="MidDoor" type="TextureButton" parent="DoorController"]
-offset_left = 812.0
-offset_top = 1.0
-offset_right = 2301.0
-offset_bottom = 2783.0
-scale = Vector2(0.336634, 0.301632)
-texture_normal = ExtResource("27_fy0o1")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="LeftDoor" type="CanvasGroup" parent="DoorController"]
-position = Vector2(964.893, 540.5)
-scale = Vector2(2.68367, 3.05367)
-
-[node name="Door" type="Sprite2D" parent="DoorController/LeftDoor"]
-modulate = Color(0.870588, 0.870588, 0.870588, 1)
-position = Vector2(-689.501, -0.491226)
-scale = Vector2(0.425713, 0.40207)
-texture = ExtResource("3_i8lan")
-flip_h = true
-
-[node name="Door2" type="Sprite2D" parent="DoorController/LeftDoor"]
-self_modulate = Color(0.870588, 0.870588, 0.870588, 1)
-position = Vector2(-532.649, -0.491225)
-scale = Vector2(0.423589, 0.40207)
-texture = ExtResource("3_i8lan")
-
-[node name="ColorRect" type="ColorRect" parent="DoorController/LeftDoor"]
-modulate = Color(1, 1, 1, 0.478431)
-offset_left = -769.0
-offset_top = -178.0
-offset_right = -454.0
-offset_bottom = 176.0
-color = Color(0.219608, 0.184314, 0, 1)
-
-[node name="Clickable" type="Button" parent="DoorController/LeftDoor"]
-visible = false
-offset_left = -769.0
-offset_top = -179.0
-offset_right = -453.0
-offset_bottom = 175.0
-
 [node name="Phone" type="AudioStreamPlayer" parent="."]
 volume_db = -12.885
 script = ExtResource("3_xwq27")
@@ -232,6 +187,7 @@ stream = ExtResource("5_mgrws")
 stream = ExtResource("7_j36al")
 
 [node name="HUD" type="RigidBody2D" parent="."]
+z_index = 1
 freeze = true
 
 [node name="Camera" type="Camera2D" parent="HUD"]
@@ -339,6 +295,51 @@ offset_right = 772.0
 offset_bottom = 251.0
 text = "Time to next hour: ?"
 label_settings = ExtResource("7_tdkjq")
+
+[node name="DoorController" type="Node" parent="."]
+script = ExtResource("5_l3pb3")
+
+[node name="MidDoor" type="TextureButton" parent="DoorController"]
+offset_left = 812.0
+offset_top = 1.0
+offset_right = 2301.0
+offset_bottom = 2783.0
+scale = Vector2(0.336634, 0.301632)
+texture_normal = ExtResource("27_fy0o1")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="LeftDoor" type="CanvasGroup" parent="DoorController"]
+position = Vector2(964.893, 540.5)
+scale = Vector2(2.68367, 3.05367)
+
+[node name="Door" type="Sprite2D" parent="DoorController/LeftDoor"]
+modulate = Color(0.870588, 0.870588, 0.870588, 1)
+position = Vector2(-689.501, -0.491226)
+scale = Vector2(0.425713, 0.40207)
+texture = ExtResource("3_i8lan")
+flip_h = true
+
+[node name="Door2" type="Sprite2D" parent="DoorController/LeftDoor"]
+self_modulate = Color(0.870588, 0.870588, 0.870588, 1)
+position = Vector2(-532.649, -0.491225)
+scale = Vector2(0.423589, 0.40207)
+texture = ExtResource("3_i8lan")
+
+[node name="ColorRect" type="ColorRect" parent="DoorController/LeftDoor"]
+modulate = Color(1, 1, 1, 0.478431)
+offset_left = -769.0
+offset_top = -178.0
+offset_right = -454.0
+offset_bottom = 176.0
+color = Color(0.219608, 0.184314, 0, 1)
+
+[node name="Clickable" type="Button" parent="DoorController/LeftDoor"]
+visible = false
+offset_left = -769.0
+offset_top = -179.0
+offset_right = -453.0
+offset_bottom = 175.0
 
 [node name="DistractionController" type="Node" parent="."]
 script = ExtResource("4_smyoc")
