@@ -10,6 +10,8 @@ public abstract class Monster
 
     public virtual Room Room { get; protected set; } = Room.Stage;
 
+    protected virtual int Night { get; set; }
+
     public virtual int BaseHostility { get; protected set; } = 300;
 
     public virtual int DynamicHostility { get; protected set; }
@@ -21,6 +23,7 @@ public abstract class Monster
     public Monster()
     {
         CalculateDifficulty();
+        Night = (int)Global.GetNight();
     }
 
     public virtual bool Roll()
@@ -58,7 +61,7 @@ public abstract class Monster
 
     protected virtual void CalculateDifficulty()
     {
-        DynamicHostility = BaseHostility - (45 * (int)Global.GetNight());
-        DynamicNeutrality = BaseNeutrality + (20 * (int)Global.GetNight());
+        DynamicHostility = BaseHostility - (50 * Night);
+        DynamicNeutrality = BaseNeutrality + (20 * Night);
     }
 }
