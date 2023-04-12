@@ -27,7 +27,7 @@ public partial class Office : Node2D
 		Global.PrematurePhoneEnd = false;
 		Global.InternalAnger = Global.StartInternalAnger;
 		Global.RemainingTime = 0;
-		Global.MonstersEnabled = false;
+		// Global.MonstersEnabled = false;
 		fastSpeed = speed * 1.5f;
 		hitboxes = GetNode<CanvasGroup>("Hitboxes");
 		HUD = GetNode<RigidBody2D>("HUD");
@@ -134,9 +134,8 @@ public partial class Office : Node2D
 			ToggleCameras();
 			Global.ModulateNodeAlpha(CAB, 0);
 		}
-		else if (!MouseIsOver(hitboxes.GetNode<ColorRect>("CameraAccess"))) {
+		else if (!MouseIsOver(hitboxes.GetNode<ColorRect>("CameraAccess")))
 			Global.ModulateNodeAlpha(CAB, 1);
-		}
 	}
 
 	private async void ToggleCameras()
