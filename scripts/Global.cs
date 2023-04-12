@@ -26,10 +26,6 @@ public class Global
 	public static bool MonstersEnabled { get; set; } = true;
 	public static bool MidDoorClosed { get; set; } = true;
     public static bool LeftDoorClosed { get; set; } = true;
-    public static int CalculateHostilityIncrease()
-	{
-		return 90 * (int) GetNight();
-	}
 
 	public static void SetNight(long night)
 	{
