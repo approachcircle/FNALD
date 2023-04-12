@@ -5,6 +5,8 @@ public partial class DistractionController : Node
 {
 	Button skipButton;
 	Sprite2D dist;
+	Timer roller;
+	int chance = 75;
 
 	[Signal]
 	public delegate void DistractedEventHandler();
@@ -12,22 +14,22 @@ public partial class DistractionController : Node
 	{
 		skipButton = GetNode<Button>("SkipButton");
 		dist = GetNode<Sprite2D>("Distraction");
+		roller = GetNode<Timer>("Roller");
 		skipButton.Pressed += StopDistract;
+		roller.Timeout += Roll;
 		GetNode<Button>("DistractButton").Pressed += Distract;
 	}
 
 	public override void _Process(double delta)
 	{
-		Roll();
 		if (Global.PlayerDisabled)
 			StopDistract();
 	}
 
 	private void Roll()
 	{
-		int max = 2000;
-		int result = new Random().Next(0, max);
-		if (result == max / 2)
+		int result = new Random().Next(0, chance);
+		if (result == chance / 2)
 		{
 			Distract();
 		}
