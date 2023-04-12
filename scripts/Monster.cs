@@ -16,7 +16,7 @@ public abstract class Monster
 
     public virtual int DynamicHostility { get; protected set; }
 
-    public virtual int BaseNeutrality { get; protected set; } = 600;
+    public virtual int BaseNeutrality { get; protected set; } = 100;
 
     public virtual int DynamicNeutrality { get; protected set; }
 
@@ -61,7 +61,7 @@ public abstract class Monster
 
     protected virtual void CalculateDifficulty()
     {
-        DynamicHostility = BaseHostility - (50 * Night);
-        DynamicNeutrality = BaseNeutrality + (20 * Night);
+        DynamicHostility = BaseHostility - (52 * Night);
+        DynamicNeutrality = BaseNeutrality + (5 * Night);
     }
 }
