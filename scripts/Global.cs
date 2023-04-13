@@ -15,7 +15,7 @@ public class Global
 	public static int Time { get; set; } = 12;
 	public static int DisplayedAnger { get; set; } = 0;
 	public static int AngerRate { get; set; } = 1;
-	public static int StartInternalAnger { get; } = 54000;
+	public static int StartInternalAnger { get; } = 48000;
     public static int InternalAnger { get; set; } = StartInternalAnger;
 	public static bool PlayerDisabled { get; set; } = false;
 	public static bool PrematurePhoneEnd { get; set; } = false;
