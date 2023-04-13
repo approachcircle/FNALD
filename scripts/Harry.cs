@@ -8,6 +8,7 @@ public class Harry : Monster
         {
             if (Room is Room.A2)
                 Goto(Room.Left);
+
             else
                 Advance();
         }
@@ -15,6 +16,8 @@ public class Harry : Monster
         {
             if (Room is Room.Left)
                 Goto(Room.A2);
+            else if (Room is Room.Office)
+                Goto(Room.B2);
             else
                 Regress();
         }
