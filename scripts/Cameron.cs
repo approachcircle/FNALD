@@ -16,6 +16,7 @@
         else
             if (Room is Room.Office)
                 Goto(Room.B2);
-            Regress();
+            else
+                Regress();
     }
 }
