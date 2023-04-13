@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class MonsterController : Node
 {
@@ -10,7 +11,12 @@ public partial class MonsterController : Node
 		new Harry()
 	};
 
-	public override void _Ready()
+	public static List<Monster> PeekingLeft { get; } = new List<Monster>();
+	public static List<Monster> LastLeft { get; } = new List<Monster>();
+    public static List<Monster> PeekingMid { get; } = new List<Monster>();
+    public static List<Monster> LastMid { get; } = new List<Monster>();
+
+    public override void _Ready()
 	{
 		GetNode<Timer>("Movement").Timeout += RollMonsters;
 	}
@@ -29,7 +35,42 @@ public partial class MonsterController : Node
 			{
 				monster.Move(monster.Direction);
 				EmitSignal(nameof(MonsterMoved), monster.Name);
+				CheckPeeking(monster);
 			}
+		}
+	}
+
+	private void CheckPeeking(Monster monster)
+	{
+		if (monster.Room is not Room.Mid)
+		{
+            if (PeekingMid.Contains(monster))
+			{
+				PeekingMid.Remove(monster);
+			}
+        }
+		else if (monster.Room is not Room.Left)
+		{
+			if (PeekingLeft.Contains(monster))
+			{
+				PeekingLeft.Remove(monster);
+			}
+		}
+		else if (monster.Room is Room.Mid)
+		{
+			if (!PeekingMid.Contains(monster))
+			{
+				PeekingMid.Add(monster);
+				LastMid.Add(monster);
+            }
+		}
+		else if (monster.Room is Room.Left)
+		{
+			if (!PeekingLeft.Contains(monster))
+			{
+				PeekingLeft.Add(monster);
+				LastLeft.Add(monster);
+            }
 		}
 	}
 }

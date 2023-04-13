@@ -328,8 +328,13 @@ texture_normal = ExtResource("27_fy0o1")
 ignore_texture_size = true
 stretch_mode = 0
 
+[node name="MidPeek" type="Sprite2D" parent="DoorController/MidDoor"]
+z_index = 2
+position = Vector2(279.235, 1399.06)
+scale = Vector2(0.919346, 1.0114)
+texture = ExtResource("32_5s74t")
+
 [node name="LeftDoor" type="CanvasGroup" parent="DoorController"]
-visible = false
 position = Vector2(964.893, 540.5)
 scale = Vector2(2.68367, 3.05367)
 
@@ -359,6 +364,12 @@ offset_left = -769.0
 offset_top = -179.0
 offset_right = -453.0
 offset_bottom = 175.0
+
+[node name="LeftPeek" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-190, 540.5)
+scale = Vector2(3.27273, 3.05367)
+texture = ExtResource("31_owkdn")
 
 [node name="DistractionController" type="Node" parent="."]
 script = ExtResource("4_smyoc")
@@ -469,15 +480,3 @@ shape = SubResource("RectangleShape2D_qi37x")
 [node name="Progression" type="Timer" parent="."]
 wait_time = 60.0
 autostart = true
-
-[node name="LeftPeek" type="Sprite2D" parent="."]
-z_index = 1
-position = Vector2(-190, 540.5)
-scale = Vector2(3.27273, 3.05367)
-texture = ExtResource("31_owkdn")
-
-[node name="MidPeek" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(906, 423)
-scale = Vector2(0.309483, 0.305072)
-texture = ExtResource("32_5s74t")
