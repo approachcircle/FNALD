@@ -27,8 +27,8 @@ public partial class MonsterController : Node
 		{
 			if (monster.Roll())
 			{
-				EmitSignal(nameof(MonsterMoved), monster.Name);
 				monster.Move(monster.Direction);
+				EmitSignal(nameof(MonsterMoved), monster.Name);
 			}
 		}
 	}
