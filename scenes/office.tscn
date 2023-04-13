@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://d05axt35dwycy"]
+[gd_scene load_steps=45 format=3 uid="uid://d05axt35dwycy"]
 
 [ext_resource type="Script" path="res://scripts/Office.cs" id="1_2vpxb"]
 [ext_resource type="Texture2D" uid="uid://dpr3ctol3y8fo" path="res://assets/office2.jpeg" id="2_kw0ic"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" path="res://scripts/Phone.cs" id="3_xwq27"]
 [ext_resource type="Script" path="res://scripts/DistractionController.cs" id="4_smyoc"]
 [ext_resource type="PackedScene" uid="uid://dlwjmyh16ktgn" path="res://scenes/cameras.tscn" id="5_7lns7"]
+[ext_resource type="Texture2D" uid="uid://dd7wivim1tj8o" path="res://assets/cameron_peek.png" id="5_gae23"]
 [ext_resource type="Script" path="res://scripts/DoorController.cs" id="5_l3pb3"]
 [ext_resource type="AudioStream" uid="uid://bswubqud3tjhy" path="res://assets/blip3.wav" id="5_mgrws"]
 [ext_resource type="Texture2D" uid="uid://cttqhpdy46kee" path="res://assets/camera_access_button.png" id="6_1lyvt"]
 [ext_resource type="Texture2D" uid="uid://bokaitd8ugfb0" path="res://assets/camera_flip_01.png" id="6_2t1jo"]
+[ext_resource type="Texture2D" uid="uid://db78bsyk1m0ba" path="res://assets/harry_peek.png" id="6_j85q8"]
 [ext_resource type="AudioStream" uid="uid://bnc3d3gwgl4xb" path="res://assets/riser.wav" id="7_j36al"]
 [ext_resource type="LabelSettings" uid="uid://cwspocuyxley7" path="res://font_config.tres" id="7_tdkjq"]
 [ext_resource type="Texture2D" uid="uid://dmrqfxs0uwd6a" path="res://assets/camera_flip_02.png" id="7_ub42n"]
@@ -28,6 +30,8 @@
 [ext_resource type="Texture2D" uid="uid://bn35b7x25orqt" path="res://assets/dist-1.png" id="24_3r8ho"]
 [ext_resource type="AudioStream" uid="uid://cwvo62gfp6wa" path="res://assets/musicbox.wav" id="25_r8bew"]
 [ext_resource type="Texture2D" uid="uid://bv5kk08d2p5rk" path="res://assets/door_open.jpg" id="27_fy0o1"]
+[ext_resource type="Texture2D" uid="uid://c1ftq7tdfq7mx" path="res://assets/left_peek_2.jpg" id="31_owkdn"]
+[ext_resource type="Texture2D" uid="uid://2pt35rd8jnyn" path="res://assets/mid_peek.jpg" id="32_5s74t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_534cf"]
 animations = [{
@@ -166,6 +170,9 @@ position = Vector2(964.893, 540.5)
 scale = Vector2(2.68367, 3.05367)
 texture = ExtResource("2_kw0ic")
 
+[node name="AngerController" type="Node" parent="."]
+script = ExtResource("3_b1h8k")
+
 [node name="MonsterController" type="Node" parent="."]
 script = ExtResource("2_mhjye")
 
@@ -173,8 +180,20 @@ script = ExtResource("2_mhjye")
 wait_time = 0.3
 autostart = true
 
-[node name="AngerController" type="Node" parent="."]
-script = ExtResource("3_b1h8k")
+[node name="CameronPeek" type="Sprite2D" parent="MonsterController"]
+visible = false
+z_index = 1
+position = Vector2(1082, 346)
+rotation = 0.324229
+scale = Vector2(0.722781, 0.954411)
+texture = ExtResource("5_gae23")
+
+[node name="HarryPeek" type="Sprite2D" parent="MonsterController"]
+visible = false
+position = Vector2(-414.297, 443.029)
+rotation = -0.563533
+scale = Vector2(1.27896, 1.23834)
+texture = ExtResource("6_j85q8")
 
 [node name="Phone" type="AudioStreamPlayer" parent="."]
 volume_db = -12.885
@@ -187,7 +206,7 @@ stream = ExtResource("5_mgrws")
 stream = ExtResource("7_j36al")
 
 [node name="HUD" type="RigidBody2D" parent="."]
-z_index = 1
+z_index = 3
 freeze = true
 
 [node name="Camera" type="Camera2D" parent="HUD"]
@@ -310,6 +329,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="LeftDoor" type="CanvasGroup" parent="DoorController"]
+visible = false
 position = Vector2(964.893, 540.5)
 scale = Vector2(2.68367, 3.05367)
 
@@ -449,3 +469,15 @@ shape = SubResource("RectangleShape2D_qi37x")
 [node name="Progression" type="Timer" parent="."]
 wait_time = 60.0
 autostart = true
+
+[node name="LeftPeek" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(-190, 540.5)
+scale = Vector2(3.27273, 3.05367)
+texture = ExtResource("31_owkdn")
+
+[node name="MidPeek" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(906, 423)
+scale = Vector2(0.309483, 0.305072)
+texture = ExtResource("32_5s74t")
