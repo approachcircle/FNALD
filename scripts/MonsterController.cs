@@ -49,26 +49,26 @@ public partial class MonsterController : Node
 				PeekingMid.Remove(monster);
 			}
         }
-		else if (monster.Room is not Room.Left)
+		if (monster.Room is not Room.Left)
 		{
 			if (PeekingLeft.Contains(monster))
 			{
-				PeekingLeft.Remove(monster);
+                PeekingLeft.Remove(monster);
 			}
 		}
-		else if (monster.Room is Room.Mid)
+		if (monster.Room is Room.Mid)
 		{
 			if (!PeekingMid.Contains(monster))
 			{
-				PeekingMid.Add(monster);
+                PeekingMid.Add(monster);
 				LastMid.Add(monster);
             }
 		}
-		else if (monster.Room is Room.Left)
+		if (monster.Room is Room.Left)
 		{
-			if (!PeekingLeft.Contains(monster))
+            if (!PeekingLeft.Contains(monster))
 			{
-				PeekingLeft.Add(monster);
+                PeekingLeft.Add(monster);
 				LastLeft.Add(monster);
             }
 		}
