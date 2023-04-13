@@ -1,6 +1,6 @@
 ﻿using System;
 
-public abstract class Monster
+public abstract class Monster : IEquatable<Monster>
 {
     public abstract string Name { get; protected set; }
 
@@ -54,6 +54,11 @@ public abstract class Monster
             Advance();
         else
             Regress();
+    }
+
+    public bool Equals(Monster monster)
+    {
+        return Name == monster.Name;
     }
 
     protected virtual void Advance()
