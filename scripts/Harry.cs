@@ -12,7 +12,12 @@ public class Harry : Monster
                 Advance();
         }
         else
-            Regress();
+        {
+            if (Room is Room.Left)
+                Goto(Room.A2);
+            else
+                Regress();
+        }
     }
 }
 

@@ -8,6 +8,8 @@
         {
             if (Room is Room.A2)
                 Goto(Room.Mid);
+            else if (Room is Room.Mid)
+                Goto(Room.Office);
             else
                 Advance();
         }
