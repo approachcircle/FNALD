@@ -10,6 +10,10 @@ public abstract class Monster : IEquatable<Monster>
 
     protected virtual int Night { get; set; }
 
+    public virtual int HostilityMultiplier { get; protected set; } = 53;
+
+    public virtual int NeutralityMultiplier { get; protected set; } = 5;
+
     public virtual int BaseHostility { get; protected set; } = 300;
 
     public virtual int DynamicHostility { get; protected set; }
@@ -95,7 +99,7 @@ public abstract class Monster : IEquatable<Monster>
 
     protected virtual void CalculateDifficulty()
     {
-        DynamicHostility = BaseHostility - (53 * Night);
-        DynamicNeutrality = BaseNeutrality + (5 * Night);
+        DynamicHostility = BaseHostility - (HostilityMultiplier * Night);
+        DynamicNeutrality = BaseNeutrality + (NeutralityMultiplier * Night);
     }
 }
