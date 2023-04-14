@@ -13,6 +13,10 @@ public partial class MainMenu : Node
 
 	public override void _Ready()
 	{
+		if (Global.GetNight() > 5 || Global.GetNight() < 1)
+		{
+			Global.SetNight(1);
+		}
 		Button continueButton = GetNode<Button>("Continue/ContinueButton");
 		Button newGameButton = GetNode<Button>("NewGame/NewGameButton");
 		CanvasGroup newGameDialog = GetNode<CanvasGroup>("ConfirmNewGame");
