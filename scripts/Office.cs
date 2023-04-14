@@ -230,7 +230,12 @@ public partial class Office : Node2D
 			}
 		}
 		foreach (Monster midMonster in MonsterController.PeekingMid)
-			GetNode<Sprite2D>($"MonsterController/{midMonster.Name}Peek").Visible = true;
+		{
+			if (!Global.MidDoorClosed)
+				GetNode<Sprite2D>($"MonsterController/{midMonster.Name}Peek").Visible = true;
+			else
+				GetNode<Sprite2D>($"MonsterController/{midMonster.Name}Peek").Visible = false;
+		}
 		foreach (Monster leftMonster in MonsterController.PeekingLeft)
 			GetNode<Sprite2D>($"MonsterController/{leftMonster.Name}Peek").Visible = true;
 	}
