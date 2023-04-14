@@ -29,7 +29,7 @@ public partial class Victory : Control
 		{
 			victoryText.MoveAndCollide(new Vector2(0, -speed * (float)delta));
 			var collided = credits.MoveAndCollide(new Vector2(0, -speed * (float)delta));
-			if (collided.GetCollider() is RigidBody2D)
+			if (collided is not null)
 				GetTree().ChangeSceneToFile("res://scenes/main_menu.tscn");
 		}
 	}
