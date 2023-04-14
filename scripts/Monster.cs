@@ -18,6 +18,8 @@ public abstract class Monster : IEquatable<Monster>
 
     public virtual int DynamicNeutrality { get; protected set; }
 
+    public abstract Room PeekLocation { get; protected set; }
+
     public Monster()
     {
         CalculateDifficulty();
@@ -51,12 +53,23 @@ public abstract class Monster : IEquatable<Monster>
     public virtual void Move(Direction direction)
     {
         if (direction is Direction.Forward)
-            Advance();
+        {
+            if (Room is Room.A2)
+                Goto(PeekLocation);
+            else if (Room == PeekLocation)
+                Goto(Room.Office);
+            else
+                Advance();
+        }
         else
-            if (Room is Room.Office)
+        {
+            if (Room == PeekLocation)
+                Goto(Room.A2);
+            else if (Room is Room.Office)
                 Goto(Room.B2);
             else
                 Regress();
+        }
     }
 
     public bool Equals(Monster monster)
