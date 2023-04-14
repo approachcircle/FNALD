@@ -99,7 +99,7 @@ Cameron Dennis
 
 Jamie Whitehair
 
-Millie Lawler"
+Millie Lawlor"
 label_settings = ExtResource("1_eealy")
 
 [node name="Collision" type="CollisionShape2D" parent="Credits"]
@@ -136,7 +136,7 @@ Animatronic
 
 Phone guy
 
-literally nothing"
+Animatronic"
 label_settings = ExtResource("1_eealy")
 
 [node name="Pause" type="Timer" parent="."]
