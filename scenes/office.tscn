@@ -416,6 +416,7 @@ label_settings = ExtResource("7_tdkjq")
 
 [node name="DistractionSound" type="AudioStreamPlayer" parent="DistractionController"]
 stream = ExtResource("25_r8bew")
+volume_db = -5.474
 
 [node name="Roller" type="Timer" parent="DistractionController"]
 autostart = true
