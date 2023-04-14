@@ -3,9 +3,6 @@ using System.Collections.Generic;
 
 public partial class MonsterController : Node
 {
-	[Signal]
-	public delegate void MonsterMovedEventHandler(string monsterName);
-
 	public static Monster[] Monsters { get; } = {
 		new Cameron(),
 		new Harry(),
@@ -35,7 +32,6 @@ public partial class MonsterController : Node
 			if (monster.Roll())
 			{
 				monster.Move(monster.Direction);
-				EmitSignal(nameof(MonsterMoved), monster.Name);
 				CheckPeeking(monster);
 			}
 		}
