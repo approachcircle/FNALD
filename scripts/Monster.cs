@@ -53,7 +53,10 @@ public abstract class Monster : IEquatable<Monster>
         if (direction is Direction.Forward)
             Advance();
         else
-            Regress();
+            if (Room is Room.Office)
+                Goto(Room.B2);
+            else
+                Regress();
     }
 
     public bool Equals(Monster monster)
