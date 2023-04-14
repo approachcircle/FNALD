@@ -126,17 +126,17 @@ offset_right = 1862.0
 offset_bottom = 1881.0
 grow_horizontal = 0
 grow_vertical = 2
-text = "Developer/Animatronic
+text = "Developer/Monster
 
-Animatronic/Game base
+Monster/Game base
 
-Animatronic
+Monster
 
-Animatronic
+Monster
 
 Phone guy
 
-Animatronic"
+Monster"
 label_settings = ExtResource("1_eealy")
 
 [node name="Pause" type="Timer" parent="."]
