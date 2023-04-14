@@ -1,0 +1,155 @@
+[gd_scene load_steps=10 format=3 uid="uid://cujopynvya1vw"]
+
+[ext_resource type="Script" path="res://scripts/Victory.cs" id="1_8tv5j"]
+[ext_resource type="LabelSettings" uid="uid://cwspocuyxley7" path="res://font_config.tres" id="1_eealy"]
+[ext_resource type="AudioStream" uid="uid://blp5fjwkvvj7b" path="res://assets/musicbox2.wav" id="3_5or5g"]
+
+[sub_resource type="SystemFont" id="SystemFont_2t0lr"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_uog68"]
+font = SubResource("SystemFont_2t0lr")
+font_size = 160
+
+[sub_resource type="SystemFont" id="SystemFont_qbr77"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_32gki"]
+font = SubResource("SystemFont_qbr77")
+font_size = 85
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3iqd"]
+size = Vector2(1926.25, 112.258)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vv7p"]
+size = Vector2(1918.5, 178)
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8tv5j")
+
+[node name="VictoryText" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="Title" type="Label" parent="VictoryText"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 667.0
+offset_top = 458.0
+offset_right = 1253.0
+offset_bottom = 622.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You win!"
+label_settings = SubResource("LabelSettings_uog68")
+
+[node name="Subtitle" type="Label" parent="VictoryText"]
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 19.0
+offset_top = 625.0
+offset_right = 1893.0
+offset_bottom = 714.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Thanks for playing Five Nights at Logan Davison's"
+label_settings = SubResource("LabelSettings_32gki")
+
+[node name="Info" type="Label" parent="VictoryText"]
+offset_left = 713.0
+offset_top = 732.0
+offset_right = 1201.0
+offset_bottom = 816.0
+text = "(Click to skip)"
+label_settings = ExtResource("1_eealy")
+
+[node name="Collision" type="CollisionShape2D" parent="VictoryText"]
+visible = false
+position = Vector2(-1450, 588)
+shape = SubResource("RectangleShape2D_a3iqd")
+
+[node name="Credits" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="Names" type="Label" parent="Credits"]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = 1652.0
+offset_right = 290.0
+offset_bottom = 1884.0
+grow_vertical = 2
+text = "Oscar McDermott
+
+Logan Davison
+
+Harry Greef
+
+Cameron Dennis
+
+Jamie Whitehair
+
+Millie Lawler"
+label_settings = ExtResource("1_eealy")
+
+[node name="Collision" type="CollisionShape2D" parent="Credits"]
+position = Vector2(973.5, 2308.87)
+shape = SubResource("RectangleShape2D_a3iqd")
+
+[node name="Title" type="Label" parent="Credits"]
+offset_left = 825.0
+offset_top = 1087.0
+offset_right = 1081.0
+offset_bottom = 1171.0
+text = "Credits"
+label_settings = ExtResource("1_eealy")
+
+[node name="Roles" type="Label" parent="Credits"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1630.0
+offset_top = 1653.0
+offset_right = 1862.0
+offset_bottom = 1881.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "Developer/Animatronic
+
+Animatronic/Game base
+
+Animatronic
+
+Animatronic
+
+Phone guy
+
+literally nothing"
+label_settings = ExtResource("1_eealy")
+
+[node name="Pause" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5or5g")
+autoplay = true
+
+[node name="UpperLimit" type="RigidBody2D" parent="."]
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperLimit"]
+position = Vector2(962.75, -89)
+shape = SubResource("RectangleShape2D_5vv7p")

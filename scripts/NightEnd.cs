@@ -17,16 +17,21 @@ public partial class NightEnd : Control
 	public override void _PhysicsProcess(double delta)
 	{
 		if (animating)
-		{
 			GetNode<RigidBody2D>("Hours").MoveAndCollide(new Vector2(0, (float)(speed * delta)));
-		}
 	}
 
 	private void PauseEnd() => animating = true;
 
 	private void AudioFinished()
 	{
-		Global.SetNight(Global.GetNight() + 1);
-		GetTree().ChangeSceneToFile("res://scenes/transition.tscn");
+		if (Global.GetNight() == 5)
+		{
+			GetTree().ChangeSceneToFile("res://scenes/victory.tscn");
+		}
+		else
+		{
+			Global.SetNight(Global.GetNight() + 1);
+			GetTree().ChangeSceneToFile("res://scenes/transition.tscn");
+		}
 	}
 }
