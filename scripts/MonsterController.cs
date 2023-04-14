@@ -8,7 +8,8 @@ public partial class MonsterController : Node
 
 	public static Monster[] Monsters { get; } = {
 		new Cameron(),
-		new Harry()
+		new Harry(),
+		new Millie()
 	};
 
 	public static List<Monster> PeekingLeft { get; } = new List<Monster>();
