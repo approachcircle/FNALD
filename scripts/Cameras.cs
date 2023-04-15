@@ -11,7 +11,7 @@ public partial class Cameras : Control
 
 	public override void _Process(double delta)
 	{
-		GetNode<Label>("Warning").Visible = !Global.MonstersEnabled;
+		GetNode<Label>("DisabledWarning").Visible = !Global.MonstersEnabled;
 		string buffer = "Monsters:";
 		foreach (Monster monster in MonsterController.Monsters)
 			buffer += $"\n{monster.Name}: {monster.Room}";
