@@ -48,7 +48,7 @@ offset_bottom = 255.0
 text = "Monsters:"
 label_settings = ExtResource("2_2vswg")
 
-[node name="Warning" type="Label" parent="."]
+[node name="DisabledWarning" type="Label" parent="."]
 visible = false
 modulate = Color(1, 0, 0, 1)
 layout_mode = 0
