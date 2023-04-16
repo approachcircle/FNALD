@@ -68,8 +68,6 @@ public abstract class Monster : IEquatable<Monster>
         else
         {
             if (Room == PeekLocation)
-                Goto(Room.A2);
-            else if (Room is Room.Office)
                 Goto(Room.B2);
             else
                 Regress();
