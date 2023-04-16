@@ -12,5 +12,9 @@ assets/*.rtf
 assets/*.odt
 assets/*.psd
 
+# testing stuff
+scripts/Test*.cs
+scenes/[Tt]est*.tscn
+
 # custom user compilation ignores
 [Mm][Aa][Kk][Ee][Ff][Ii][Ll][Ee]
