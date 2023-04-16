@@ -30,33 +30,30 @@ public abstract class Monster : IEquatable<Monster>
         Night = (int)Global.GetNight();
     }
 
-    public virtual bool Roll()
+    public virtual void Roll()
     {
         if (Global.AngerRate != 1) DynamicHostility -= Global.AngerRate * 2;
         if (Global.AngerRate != 1) DynamicNeutrality += Global.AngerRate * 2;
         if (new Random().Next(1, DynamicHostility) == DynamicHostility / 2)
         {
-            if (Room == Room.Office) return false;
-            Direction = Direction.Forward;
-            return true;
+            if (Room != Room.Office)
+                Direction = Direction.Forward;
         }
         else if (new Random().Next(1, DynamicNeutrality) == DynamicNeutrality / 2)
         {
-            if (Room == Room.Stage) return false;
-            if (Room == Room.B1) return false;
-            Direction = Direction.Backward;
-            return true;
+            if (Room != Room.Stage && Room != Room.B1)
+                Direction = Direction.Backward;
         }
         else
         {
             CalculateDifficulty();
-            return false;
+            Direction = Direction.Static;
         }
     }
 
-    public virtual void Move(Direction direction)
+    public virtual void Move()
     {
-        if (direction is Direction.Forward)
+        if (Direction is Direction.Forward)
         {
             if (Room is Room.A2)
                 Goto(PeekLocation);
@@ -65,7 +62,7 @@ public abstract class Monster : IEquatable<Monster>
             else
                 Advance();
         }
-        else
+        else if (Direction is Direction.Backward)
         {
             if (Room == PeekLocation)
                 Goto(Room.B2);

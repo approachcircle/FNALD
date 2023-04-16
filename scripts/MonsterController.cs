@@ -29,11 +29,9 @@ public partial class MonsterController : Node
 		if (!Global.MonstersEnabled) return;
 		foreach (Monster monster in Monsters)
 		{
-			if (monster.Roll())
-			{
-				monster.Move(monster.Direction);
-				CheckPeeking(monster);
-			}
+			monster.Roll();
+			monster.Move();
+			CheckPeeking(monster);
 		}
 	}
 

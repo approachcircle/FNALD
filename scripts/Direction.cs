@@ -1,5 +1,6 @@
 ﻿public enum Direction
 {
     Forward,
-    Backward
+    Backward,
+    Static
 }
