@@ -12,7 +12,7 @@ using System.Collections.Generic;
 public partial class Office : Node2D
 {
 	[Export]
-	float speed = 700.0f;
+	float speed = 1000.0f;
 	float fastSpeed;
 	float velocity = 1.0f;
 	List<Camera2D> physCameras = new List<Camera2D>();
