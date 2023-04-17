@@ -121,10 +121,6 @@ sprite_frames = SubResource("SpriteFrames_mvi4c")
 animation = &"wait"
 frame_progress = 0.383199
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 4.0
-autostart = true
-
 [node name="Cover" type="CharacterBody2D" parent="."]
 
 [node name="Colour" type="ColorRect" parent="Cover"]
