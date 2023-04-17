@@ -1,24 +1,31 @@
 using Godot;
 using System;
+using System.Threading;
 
 public partial class Transition : Control
 {
-	bool uncovering = false;
-	int speed = 250;
+	PackedScene office;
+	Thread thread;
 
-	public override void _Ready()
+	public async override void _Ready()
 	{
+		thread = new Thread(() => {
+			try
+			{
+				office = GD.Load<PackedScene>("res://scenes/office.tscn");
+			}
+			finally
+			{
+				BeginNight();
+			}
+		});
 		Global.Time = 12;
 		GetNode<Label>("Night").Text = $"Night {Global.GetNight()}";
 		GetNode<AnimatedSprite2D>("Wait").Play();
-		GetNode<Timer>("Timer").Timeout += BeginNight;
-		uncovering = true;
+		GetNode<AnimationPlayer>("Animator").Play("uncover");
+		await ToSignal(GetNode<AnimationPlayer>("Animator"), "animation_finished");
+		thread.Start();
 	}
 
-	public override void _PhysicsProcess(double delta)
-	{
-		GetNode<CharacterBody2D>("Cover").MoveAndCollide(new Vector2((float)(speed * delta), 0));
-	}
-
-	private void BeginNight() => GetTree().ChangeSceneToFile("res://scenes/office.tscn");
+	private void BeginNight() => GetTree().ChangeSceneToPacked(office);
 }
