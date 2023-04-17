@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://8w380uxwsc"]
+[gd_scene load_steps=16 format=3 uid="uid://8w380uxwsc"]
 
 [ext_resource type="Script" path="res://scripts/Transition.cs" id="1_7cmnb"]
 [ext_resource type="LabelSettings" uid="uid://cwspocuyxley7" path="res://font_config.tres" id="1_qj1fy"]
@@ -74,6 +74,14 @@ _data = {
 "uncover": SubResource("Animation_fqj7b")
 }
 
+[sub_resource type="SystemFont" id="SystemFont_i63ah"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="LabelSettings" id="LabelSettings_5vuxw"]
+font = SubResource("SystemFont_i63ah")
+font_size = 80
+font_color = Color(1, 1, 0, 1)
+
 [node name="Transition" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -138,3 +146,21 @@ shape = SubResource("RectangleShape2D_wu6ih")
 libraries = {
 "": SubResource("AnimationLibrary_xnr6m")
 }
+
+[node name="Warning" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -774.0
+offset_top = 108.0
+offset_right = 774.0
+offset_bottom = 192.0
+grow_horizontal = 2
+text = "This is taking a while, maybe try restarting?"
+label_settings = SubResource("LabelSettings_5vuxw")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true

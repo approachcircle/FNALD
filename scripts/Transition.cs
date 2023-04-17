@@ -19,6 +19,7 @@ public partial class Transition : Control
 				BeginNight();
 			}
 		});
+		GetNode<Godot.Timer>("Timer").Timeout += () => { GetNode<Label>("Warning").Visible = true; };
 		Global.Time = 12;
 		GetNode<Label>("Night").Text = $"Night {Global.GetNight()}";
 		GetNode<AnimatedSprite2D>("Wait").Play();
