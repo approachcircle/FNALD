@@ -13,7 +13,7 @@ public partial class Jumpscare : Node2D
 		{
 			GetNode<Timer>("Remaining").Start(Global.RemainingTime);
 		}
-		int pause = new Random().Next(7, 30);
+		int pause = new Random().Next(7, 15);
 		GetNode<Timer>("Pause").Timeout += Trigger;
 		GetNode<Timer>("Pause").Start(pause);
 		GetNode<Timer>("Remaining").Timeout += EndNight;
