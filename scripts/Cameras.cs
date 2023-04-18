@@ -14,7 +14,7 @@ public partial class Cameras : Control
 		GetNode<Label>("DisabledWarning").Visible = !Global.MonstersEnabled;
 		string buffer = "Monsters:";
 		foreach (Monster monster in MonsterController.Monsters)
-			buffer += $"\n{monster.Name}: {monster.Room}";
+			buffer += $"\n{monster.Name}: {monster.Room} (H: {monster.DynamicHostility} N: {monster.DynamicNeutrality} D: {monster.Direction})";
 		GetNode<Label>("Rooms").Text = buffer;
 		FlashLight();
 	}
