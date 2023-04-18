@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://d05axt35dwycy"]
+[gd_scene load_steps=48 format=3 uid="uid://d05axt35dwycy"]
 
 [ext_resource type="Script" path="res://scripts/Office.cs" id="1_2vpxb"]
 [ext_resource type="Texture2D" uid="uid://dpr3ctol3y8fo" path="res://assets/office2.jpeg" id="2_kw0ic"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://bn35b7x25orqt" path="res://assets/dist-1.png" id="24_3r8ho"]
 [ext_resource type="AudioStream" uid="uid://cwvo62gfp6wa" path="res://assets/musicbox.wav" id="25_r8bew"]
 [ext_resource type="Texture2D" uid="uid://bv5kk08d2p5rk" path="res://assets/door_open.jpg" id="27_fy0o1"]
+[ext_resource type="AudioStream" uid="uid://bw7sdfi5o5shr" path="res://assets/knock_mid.wav" id="30_psymb"]
+[ext_resource type="AudioStream" uid="uid://cmrbw5q3u1eu4" path="res://assets/knock_left.wav" id="31_580gb"]
 [ext_resource type="Texture2D" uid="uid://c1ftq7tdfq7mx" path="res://assets/left_peek_2.jpg" id="31_owkdn"]
 [ext_resource type="Texture2D" uid="uid://2pt35rd8jnyn" path="res://assets/mid_peek.jpg" id="32_5s74t"]
 
@@ -372,6 +374,13 @@ offset_left = -769.0
 offset_top = -179.0
 offset_right = -453.0
 offset_bottom = 175.0
+
+[node name="KnockMid" type="AudioStreamPlayer" parent="DoorController"]
+stream = ExtResource("30_psymb")
+volume_db = -3.0
+
+[node name="KnockLeft" type="AudioStreamPlayer" parent="DoorController"]
+stream = ExtResource("31_580gb")
 
 [node name="LeftPeek" type="Sprite2D" parent="."]
 z_index = 1

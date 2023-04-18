@@ -26,8 +26,10 @@ public class Global
 	public static bool MonstersEnabled { get; set; } = true;
 	public static bool MidDoorClosed { get; set; } = false;
     public static bool LeftDoorClosed { get; set; } = false;
+	public static bool KnockingMid { get; set; } = false;
+    public static bool KnockingLeft { get; set; } = false;
 
-	public static void SetNight(long night)
+    public static void SetNight(long night)
 	{
 		using (FileAccess file = FileAccess.Open(DataPath, FileAccess.ModeFlags.Write))
 		{

@@ -17,6 +17,16 @@ public partial class DoorController : Node
 	public override void _Process(double delta)
 	{
 		UpdateDoorVisuals();
+		if (Global.KnockingLeft)
+		{
+			Global.KnockingLeft = false;
+			GetNode<AudioStreamPlayer>("KnockLeft").Play();
+		}
+		if (Global.KnockingMid)
+		{
+			Global.KnockingMid = false;
+            GetNode<AudioStreamPlayer>("KnockMid").Play();
+        }
 	}
 
 	private void MidDoorClicked()
