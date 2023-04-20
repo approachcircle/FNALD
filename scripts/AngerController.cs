@@ -14,6 +14,7 @@ public partial class AngerController : Node
 
 	private async void TriggerAnger()
 	{
+		Global.AttackType = AttackType.Angry;
 		AnimationPlayer animator = GetNode<AnimationPlayer>("../HUD/AngerAnimation");
 		Global.PlayerDisabled = true;
 		animator.Play("move_meter");

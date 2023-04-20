@@ -10,13 +10,13 @@ public class Global
 		Down
 	}
 	public static string DataPath { get; } = "user://fnald.json";
-    public static CamerasState Cameras { get; set; } = CamerasState.Down;
+	public static CamerasState Cameras { get; set; } = CamerasState.Down;
 	public static bool SkippedToOffice { get; set; } = false;
 	public static int Time { get; set; } = 12;
 	public static int DisplayedAnger { get; set; } = 0;
 	public static int AngerRate { get; set; } = 1;
 	public static int StartInternalAnger { get; } = 48000;
-    public static int InternalAnger { get; set; } = StartInternalAnger;
+	public static int InternalAnger { get; set; } = StartInternalAnger;
 	public static bool PlayerDisabled { get; set; } = false;
 	public static bool PrematurePhoneEnd { get; set; } = false;
 	public static bool PhoneActive { get; set; } = false;
@@ -25,9 +25,10 @@ public class Global
 	public static bool Distracted { get; set; } = false;
 	public static bool MonstersEnabled { get; set; } = true;
 	public static bool MidDoorClosed { get; set; } = false;
-    public static bool LeftDoorClosed { get; set; } = false;
+	public static bool LeftDoorClosed { get; set; } = false;
 	public static bool KnockingMid { get; set; } = false;
-    public static bool KnockingLeft { get; set; } = false;
+	public static bool KnockingLeft { get; set; } = false;
+	public static AttackType AttackType { get; set; }
 
     public static void SetNight(long night)
 	{
