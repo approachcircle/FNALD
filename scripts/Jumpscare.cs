@@ -14,8 +14,9 @@ public partial class Jumpscare : Node2D
 		}
 		else if (Global.AttackType is AttackType.Monster)
 		{
-			image.Texture = GD.Load<CompressedTexture2D>($"res://assets/{MonsterController.AttackingMonster.Name}Jump");
-			TriggerAttack();
+			throw new NotImplementedException();
+			// image.Texture = GD.Load<CompressedTexture2D>($"res://assets/{MonsterController.AttackingMonster.Name}Jump");
+			// TriggerAttack();
 		}
 	}
 
