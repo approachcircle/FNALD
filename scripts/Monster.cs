@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
 
 public abstract class Monster : IEquatable<Monster>
 {
-    public abstract string Name { get; protected set; }
+    public abstract string Name { get; }
 
     public virtual Direction Direction { get; protected set; }
 
@@ -10,19 +11,34 @@ public abstract class Monster : IEquatable<Monster>
 
     protected virtual int Night { get; set; }
 
-    public virtual int HostilityMultiplier { get; protected set; } = 53;
+    public virtual int HostilityMultiplier { get; } = 53;
 
-    public virtual int NeutralityMultiplier { get; protected set; } = 5;
+    public virtual int NeutralityMultiplier { get; } = 5;
 
-    public virtual int BaseHostility { get; protected set; } = 330;
+    public virtual int BaseHostility { get; } = 325;
 
     public virtual int DynamicHostility { get; protected set; }
 
-    public virtual int BaseNeutrality { get; protected set; } = 113;
+    public virtual int BaseNeutrality { get; } = 113;
 
     public virtual int DynamicNeutrality { get; protected set; }
 
-    public abstract Room PeekLocation { get; protected set; }
+    public abstract Room PeekLocation { get; }
+
+    public virtual MonsterState State { get; set; } = MonsterState.Idle;
+
+    public virtual bool IsPeeking {
+        get
+        {
+            return Room == PeekLocation;
+        }
+    }
+
+    public virtual bool CanAttack {
+        get {
+            return CanEnterOffice() && IsPeeking;
+        }
+    }
 
     public Monster()
     {
@@ -55,7 +71,7 @@ public abstract class Monster : IEquatable<Monster>
         {
             if (Room is Room.A2)
                 Goto(PeekLocation);
-            else if (Room == PeekLocation)
+            else if (IsPeeking)
                 if (CanEnterOffice())
                     Goto(Room.Office);
                 else
@@ -68,7 +84,7 @@ public abstract class Monster : IEquatable<Monster>
         }
         else if (Direction is Direction.Backward)
         {
-            if (Room == PeekLocation)
+            if (IsPeeking)
                 Goto(Room.B2);
             else
                 Regress();
@@ -80,18 +96,18 @@ public abstract class Monster : IEquatable<Monster>
         return Name == monster.Name;
     }
 
-    protected virtual void Advance()
+    public virtual void Advance()
     {
         var rooms = Room.GetRooms();
         Room = rooms[rooms.IndexOf(Room) + 1];
     }
-    protected virtual void Regress()
+    public virtual void Regress()
     {
         var rooms = Room.GetRooms();
         Room = rooms[rooms.IndexOf(Room) - 1];
     }
 
-    protected void Goto(Room room)
+    public void Goto(Room room)
     {
         Room = room;
     }
@@ -108,6 +124,6 @@ public abstract class Monster : IEquatable<Monster>
         DynamicNeutrality = BaseNeutrality + (NeutralityMultiplier * Night);
         if (Global.AngerRate != 1) DynamicHostility -= Global.AngerRate;
         if (Global.AngerRate != 1) DynamicNeutrality += Global.AngerRate;
-        if (Room == PeekLocation && !CanEnterOffice()) DynamicNeutrality /= 2;
+        if (IsPeeking && !CanEnterOffice()) DynamicNeutrality /= 2;
     }
 }
