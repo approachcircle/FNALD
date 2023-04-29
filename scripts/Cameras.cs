@@ -15,7 +15,7 @@ public partial class Cameras : Control
 		string buffer = "Monsters:";
 		foreach (Monster monster in MonsterController.Monsters)
 			buffer += $"\n{monster.Name}: {monster.Room} (H: {monster.DynamicHostility} N: {monster.DynamicNeutrality} D: {monster.Direction} S: {monster.State})";
-		GetNode<Label>("Rooms").Text = buffer;
+        GetNode<Label>("Rooms").Text = buffer;
 		FlashLight();
 	}
 

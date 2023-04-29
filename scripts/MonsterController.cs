@@ -7,8 +7,11 @@ public partial class MonsterController : Node
 	public static Monster[] Monsters { get; } = {
 		new Cameron(),
 		new Harry(),
-		new Millie()
+		new Millie(),
+		new Oscar()
 	};
+
+	// public static Monster Oscar { get; } = new Oscar();
 
 	public static List<Monster> PeekingLeft { get; } = new List<Monster>();
 	public static List<Monster> LastLeft { get; } = new List<Monster>();
@@ -35,10 +38,16 @@ public partial class MonsterController : Node
     {
 		foreach (Monster monster in Monsters)
 		{
-			UpdateStatus(monster);
-			CheckPeeking(monster);
-			CheckAwaitingAttacks(monster);
+			if (!monster.SuppressStateChange)
+				UpdateState(monster);
+			if (!monster.SuppressPeeking)
+				CheckPeeking(monster);
+			if (!monster.SuppressJumpscare)
+				CheckAwaitingAttacks(monster);
 		}
+/*		if (!Oscar.SuppressStateChange) UpdateState(Oscar);
+		if (!Oscar.SuppressPeeking) CheckPeeking(Oscar);
+		if (!Oscar.SuppressJumpscare) CheckAwaitingAttacks(Oscar);*/
 	}
 
 	private void UpdateMonsters()
@@ -49,10 +58,16 @@ public partial class MonsterController : Node
 			monster.Roll();
 			monster.Move();
 		}
+/*		Oscar.Roll();
+		Oscar.Move();*/
 	}
 
 	private void CheckPeeking(Monster monster)
 	{
+		if (monster is Oscar)
+		{
+			ApplyOscarPeeking((Oscar)monster);
+		}
 		if (monster.Room is not Room.Mid)
 		{
             if (PeekingMid.Contains(monster))
@@ -85,7 +100,13 @@ public partial class MonsterController : Node
 		}
 	}
 
-	private void UpdateStatus(Monster monster)
+	private void ApplyOscarPeeking(Oscar oscar)
+	{
+		GetNode<Sprite2D>("OscarPeek").Visible = oscar.IsPeeking;
+		Global.CamerasEnabled = !oscar.IsPeeking;
+	}
+
+	private void UpdateState(Monster monster)
 	{
         if (!monster.CanAttack && monster.Room is not Room.Office)
         {
@@ -132,9 +153,9 @@ public partial class MonsterController : Node
 
 	private void CheckAwaitingAttacks(Monster monster)
 	{
-		if (monster.State is MonsterState.Attacking)
+        if (monster.State is MonsterState.Attacking)
 		{
-			AttackingMonster = monster;
+            AttackingMonster = monster;
 			if (Global.Cameras is Global.CamerasState.Down)
 				Jumpscare();
 			else
@@ -144,7 +165,7 @@ public partial class MonsterController : Node
 
 	private void Jumpscare()
 	{
-		Global.AttackType = AttackType.Monster;
-		GetTree().ChangeSceneToFile("res://scenes/jumpscare.tscn");
-	}
+        Global.AttackType = AttackType.Monster;
+        GetTree().ChangeSceneToFile("res://scenes/jumpscare.tscn");
+    }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Reflection.Metadata.Ecma335;
 
 public abstract class Monster : IEquatable<Monster>
 {
@@ -26,6 +25,12 @@ public abstract class Monster : IEquatable<Monster>
     public abstract Room PeekLocation { get; }
 
     public virtual MonsterState State { get; set; } = MonsterState.Idle;
+
+    public virtual bool SuppressJumpscare { get; } = false;
+
+    public virtual bool SuppressStateChange { get; } = false;
+
+    public virtual bool SuppressPeeking { get; } = false;
 
     public virtual bool IsPeeking {
         get

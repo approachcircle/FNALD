@@ -19,6 +19,7 @@
 [ext_resource type="LabelSettings" uid="uid://cwspocuyxley7" path="res://font_config.tres" id="7_tdkjq"]
 [ext_resource type="Texture2D" uid="uid://dmrqfxs0uwd6a" path="res://assets/camera_flip_02.png" id="7_ub42n"]
 [ext_resource type="Texture2D" uid="uid://dovwqi5n5ca2o" path="res://assets/camera_flip_03.png" id="8_chr1m"]
+[ext_resource type="Texture2D" uid="uid://8gsv3v3uqb26" path="res://assets/oscar_peek.png" id="8_nrawi"]
 [ext_resource type="Texture2D" uid="uid://b5ud45x6r4qe1" path="res://assets/camera_flip_04.png" id="9_jg2pn"]
 [ext_resource type="Texture2D" uid="uid://cc1synca74xft" path="res://assets/camera_flip_05.png" id="10_ju3vh"]
 [ext_resource type="Texture2D" uid="uid://dv4l6rytlhn1q" path="res://assets/camera_flip_06.png" id="11_nmo61"]
@@ -469,6 +470,12 @@ z_index = 1
 position = Vector2(1090, 74)
 scale = Vector2(2.62625, 1.3875)
 texture = ExtResource("7_q24ii")
+
+[node name="OscarPeek" type="Sprite2D" parent="MonsterController"]
+visible = false
+position = Vector2(371.25, 476.75)
+scale = Vector2(1.85043, 1.83074)
+texture = ExtResource("8_nrawi")
 
 [node name="AttackTimer" type="Timer" parent="MonsterController"]
 wait_time = 4.0
