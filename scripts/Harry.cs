@@ -1,6 +1,6 @@
 public class Harry : Monster
 {
-	public override string Name { get; } = "Harry";
-    public override Room PeekLocation { get; } = Room.Left;
+	public override string Name => "Harry";
+    public override Room PeekLocation => Room.Left;
 }
 

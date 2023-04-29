@@ -31,24 +31,40 @@ public partial class DoorController : Node
 
 	private void MidDoorClicked()
 	{
-		if (Global.MidDoorClosed) Global.AngerRate--; else Global.AngerRate++;
-		Global.MidDoorClosed = !Global.MidDoorClosed;
+		if (Global.ClosedDoors.Contains(Room.Mid))
+		{
+			Global.AngerRate--;
+			Global.ClosedDoors.Remove(Room.Mid);
+		}
+		else
+		{
+			Global.AngerRate++;
+			Global.ClosedDoors.Add(Room.Mid);
+		}
 	}
 
 	private void LeftDoorClicked()
 	{
-		if (Global.LeftDoorClosed) Global.AngerRate--; else Global.AngerRate++;
-		Global.LeftDoorClosed = !Global.LeftDoorClosed;
-	}
+        if (Global.ClosedDoors.Contains(Room.Left))
+        {
+            Global.AngerRate--;
+            Global.ClosedDoors.Remove(Room.Left);
+        }
+        else
+        {
+            Global.AngerRate++;
+            Global.ClosedDoors.Add(Room.Left);
+        }
+    }
 
 	private void UpdateDoorVisuals()
 	{
-		if (Global.LeftDoorClosed)
+		if (Global.ClosedDoors.Contains(Room.Left))
 			Global.ModulateNodeAlpha(leftDoor, 1);
 		else
 			Global.ModulateNodeAlpha(leftDoor, 0);
 
-		if (Global.MidDoorClosed)
+		if (Global.ClosedDoors.Contains(Room.Mid))
 			Global.ModulateNodeAlpha(midDoor, 0);
 		else
 			Global.ModulateNodeAlpha(midDoor, 1);

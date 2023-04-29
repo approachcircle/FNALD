@@ -77,7 +77,6 @@ public partial class Office : Node2D
 		{
 			HUD.GetNode<Control>("Cameras").Visible = false;
 		}
-		ApplyMonsterPeeking();
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -215,34 +214,5 @@ public partial class Office : Node2D
 	{
 		if (Global.Cameras is Global.CamerasState.Up)
 			ToggleCameras();
-	}
-
-	private void ApplyMonsterPeeking()
-	{
-		if (MonsterController.PeekingMid.Count == 0)
-		{
-			foreach (Monster lastMidMonster in MonsterController.LastMid)
-			{
-				GetNode<Sprite2D>($"MonsterController/{lastMidMonster.Name}Peek").Visible = false;
-				MonsterController.LastMid.Remove(lastMidMonster);
-			}
-		}
-		if (MonsterController.PeekingLeft.Count == 0)
-		{
-			foreach (Monster lastLeftMonster in MonsterController.LastLeft)
-			{
-				GetNode<Sprite2D>($"MonsterController/{lastLeftMonster.Name}Peek").Visible = false;
-				MonsterController.LastLeft.Remove(lastLeftMonster);
-			}
-		}
-		foreach (Monster midMonster in MonsterController.PeekingMid)
-		{
-			if (!Global.MidDoorClosed)
-				GetNode<Sprite2D>($"MonsterController/{midMonster.Name}Peek").Visible = true;
-			else
-				GetNode<Sprite2D>($"MonsterController/{midMonster.Name}Peek").Visible = false;
-		}
-		foreach (Monster leftMonster in MonsterController.PeekingLeft)
-			GetNode<Sprite2D>($"MonsterController/{leftMonster.Name}Peek").Visible = true;
 	}
 }

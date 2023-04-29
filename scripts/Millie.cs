@@ -1,6 +1,6 @@
 ﻿public class Millie : Monster
 {
-    public override string Name { get; } = "Millie";
-    public override Room PeekLocation { get; } = Room.Mid;
-    public override int HostilityMultiplier { get; } = 55;
+    public override string Name => "Millie";
+    public override Room PeekLocation => Room.Mid;
+    public override int HostilityMultiplier => 55;
 }
