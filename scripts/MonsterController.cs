@@ -51,7 +51,8 @@ public partial class MonsterController : Node
 		foreach (Monster monster in Monsters)
 		{
 			monster.Roll();
-			monster.Move();
+			if (!monster.SuppressMovement)
+				monster.Move();
 		}
 	}
 

@@ -32,6 +32,8 @@ public abstract class Monster : IEquatable<Monster>
 
     public virtual bool SuppressPeeking => false;
 
+    public virtual bool SuppressMovement => false;
+
     public virtual bool IsPeeking => Room == PeekLocation;
 
     public virtual bool CanEnterOffice => !Global.ClosedDoors.Contains(PeekLocation);
