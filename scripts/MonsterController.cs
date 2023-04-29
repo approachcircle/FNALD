@@ -11,8 +11,6 @@ public partial class MonsterController : Node
 		new Oscar()
 	};
 
-	// public static Monster Oscar { get; } = new Oscar();
-
 	public static List<Monster> PeekingLeft { get; } = new List<Monster>();
 	public static List<Monster> LastLeft { get; } = new List<Monster>();
 	public static List<Monster> PeekingMid { get; } = new List<Monster>();
@@ -45,9 +43,6 @@ public partial class MonsterController : Node
 			if (!monster.SuppressJumpscare)
 				CheckAwaitingAttacks(monster);
 		}
-/*		if (!Oscar.SuppressStateChange) UpdateState(Oscar);
-		if (!Oscar.SuppressPeeking) CheckPeeking(Oscar);
-		if (!Oscar.SuppressJumpscare) CheckAwaitingAttacks(Oscar);*/
 	}
 
 	private void UpdateMonsters()
@@ -58,69 +53,28 @@ public partial class MonsterController : Node
 			monster.Roll();
 			monster.Move();
 		}
-/*		Oscar.Roll();
-		Oscar.Move();*/
 	}
 
 	private void CheckPeeking(Monster monster)
 	{
-		if (monster is Oscar)
-		{
-			ApplyOscarPeeking((Oscar)monster);
-		}
-		if (monster.Room is not Room.Mid)
-		{
-            if (PeekingMid.Contains(monster))
-			{
-				PeekingMid.Remove(monster);
-			}
-        }
-		if (monster.Room is not Room.Left)
-		{
-			if (PeekingLeft.Contains(monster))
-			{
-                PeekingLeft.Remove(monster);
-			}
-		}
-		if (monster.Room is Room.Mid)
-		{
-			if (!PeekingMid.Contains(monster))
-			{
-                PeekingMid.Add(monster);
-				LastMid.Add(monster);
-            }
-		}
-		if (monster.Room is Room.Left)
-		{
-            if (!PeekingLeft.Contains(monster))
-			{
-                PeekingLeft.Add(monster);
-				LastLeft.Add(monster);
-            }
-		}
-	}
-
-	private void ApplyOscarPeeking(Oscar oscar)
-	{
-		GetNode<Sprite2D>("OscarPeek").Visible = oscar.IsPeeking;
-		Global.CamerasEnabled = !oscar.IsPeeking;
+		GetNode<Sprite2D>($"{monster}Peek").Visible = monster.CanAttack;
 	}
 
 	private void UpdateState(Monster monster)
 	{
+        if (!monster.CanAttack)
+        {
+            if (attackTimerStarted)
+                attackTimer.Stop();
+            monster.State = MonsterState.Blocked;
+            if (WaitingAttackers.Contains(monster))
+                WaitingAttackers.Remove(monster);
+        }
         if (!monster.CanAttack && monster.Room is not Room.Office)
         {
             if (attackTimerStarted)
                 attackTimer.Stop();
             monster.State = MonsterState.Idle;
-            if (WaitingAttackers.Contains(monster))
-                WaitingAttackers.Remove(monster);
-        }
-		if (!monster.CanAttack && monster.IsPeeking)
-		{
-            if (attackTimerStarted)
-                attackTimer.Stop();
-            monster.State = MonsterState.Blocked;
             if (WaitingAttackers.Contains(monster))
                 WaitingAttackers.Remove(monster);
         }

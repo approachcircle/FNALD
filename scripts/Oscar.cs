@@ -2,11 +2,12 @@
 
 public class Oscar : Monster
 {
-    public override string Name { get; } = "Oscar";
-    public override Room PeekLocation { get; } = Room.Office;
-    public override bool SuppressStateChange { get; } = true;
-    public override int HostilityMultiplier { get; } = 49;
-    public override int NeutralityMultiplier { get; } = 50;
+    public override string Name => "Oscar";
+    public override Room PeekLocation => Room.Office;
+    public override bool SuppressStateChange => true;
+    public override int HostilityMultiplier => 49;
+    public override int NeutralityMultiplier => 50;
+    public override bool CanEnterOffice => true;
 
     public Oscar() : base()
     {

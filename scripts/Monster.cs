@@ -10,15 +10,15 @@ public abstract class Monster : IEquatable<Monster>
 
     protected virtual int Night { get; set; }
 
-    public virtual int HostilityMultiplier { get; } = 53;
+    public virtual int HostilityMultiplier => 53;
 
-    public virtual int NeutralityMultiplier { get; } = 5;
+    public virtual int NeutralityMultiplier => 5;
 
-    public virtual int BaseHostility { get; } = 325;
+    public virtual int BaseHostility => 325;
 
     public virtual int DynamicHostility { get; protected set; }
 
-    public virtual int BaseNeutrality { get; } = 113;
+    public virtual int BaseNeutrality => 113;
 
     public virtual int DynamicNeutrality { get; protected set; }
 
@@ -26,24 +26,17 @@ public abstract class Monster : IEquatable<Monster>
 
     public virtual MonsterState State { get; set; } = MonsterState.Idle;
 
-    public virtual bool SuppressJumpscare { get; } = false;
+    public virtual bool SuppressJumpscare => false;
 
-    public virtual bool SuppressStateChange { get; } = false;
+    public virtual bool SuppressStateChange => false;
 
-    public virtual bool SuppressPeeking { get; } = false;
+    public virtual bool SuppressPeeking => false;
 
-    public virtual bool IsPeeking {
-        get
-        {
-            return Room == PeekLocation;
-        }
-    }
+    public virtual bool IsPeeking => Room == PeekLocation;
 
-    public virtual bool CanAttack {
-        get {
-            return CanEnterOffice() && IsPeeking;
-        }
-    }
+    public virtual bool CanEnterOffice => !Global.ClosedDoors.Contains(PeekLocation);
+
+    public virtual bool CanAttack => CanEnterOffice && IsPeeking;
 
     public Monster()
     {
@@ -77,7 +70,7 @@ public abstract class Monster : IEquatable<Monster>
             if (Room is Room.A2)
                 Goto(PeekLocation);
             else if (IsPeeking)
-                if (CanEnterOffice())
+                if (CanEnterOffice)
                     Goto(Room.Office);
                 else
                     if (PeekLocation == Room.Left)
@@ -116,19 +109,12 @@ public abstract class Monster : IEquatable<Monster>
     {
         Room = room;
     }
-    
-    public bool CanEnterOffice()
-    {
-        return (PeekLocation == Room.Left && !Global.LeftDoorClosed) ||
-            (PeekLocation == Room.Mid && !Global.MidDoorClosed);
-    }
-
     protected void CalculateDifficulty()
     {
         DynamicHostility = BaseHostility - (HostilityMultiplier * Night);
         DynamicNeutrality = BaseNeutrality + (NeutralityMultiplier * Night);
         if (Global.AngerRate != 1) DynamicHostility -= Global.AngerRate;
         if (Global.AngerRate != 1) DynamicNeutrality += Global.AngerRate;
-        if (IsPeeking && !CanEnterOffice()) DynamicNeutrality /= 2;
+        if (IsPeeking && !CanEnterOffice) DynamicNeutrality /= 2;
     }
 }

@@ -24,8 +24,7 @@ public class Global
 	public static bool CamerasEnabled { get; set; } = true;
 	public static bool Distracted { get; set; } = false;
 	public static bool MonstersEnabled { get; set; } = true;
-	public static bool MidDoorClosed { get; set; } = false;
-	public static bool LeftDoorClosed { get; set; } = false;
+	public static List<Room> ClosedDoors { get; } = new List<Room>();
 	public static bool KnockingMid { get; set; } = false;
 	public static bool KnockingLeft { get; set; } = false;
 	public static AttackType AttackType { get; set; }
