@@ -27,6 +27,7 @@ public partial class Office : Node2D
 		Global.PrematurePhoneEnd = false;
 		Global.InternalAnger = Global.StartInternalAnger;
 		Global.RemainingTime = 0;
+		Global.CamerasEnabled = true;
 		// Global.MonstersEnabled = false;
 		fastSpeed = speed * 1.5f;
 		hitboxes = GetNode<CanvasGroup>("Hitboxes");
@@ -41,6 +42,11 @@ public partial class Office : Node2D
 		GetNode<AngerMeter>("HUD/AngerMeter").Angry += AngerTriggered;
 		GetNode<Button>("HUD/NextHour").Pressed += HourPassed;
 		GetNode<DistractionController>("DistractionController").Distracted += CloseCameras;
+		QuicktimeController.QuicktimeStarted += (_, _) => CloseCameras();
+		GetNode<Button>("HUD/Quicktime").Pressed += () =>
+		{
+			QuicktimeController.StartEvent(new Key[] { Key.Q, Key.E });
+		};
 	}
 
 	public override void _Process(double delta)
