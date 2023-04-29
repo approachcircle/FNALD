@@ -478,10 +478,10 @@ scale = Vector2(1.85043, 1.83074)
 texture = ExtResource("8_nrawi")
 
 [node name="AttackTimer" type="Timer" parent="MonsterController"]
-wait_time = 4.0
+wait_time = 5.0
 
 [node name="JumpTimer" type="Timer" parent="MonsterController"]
-wait_time = 5.0
+wait_time = 4.0
 
 [node name="Phone" type="AudioStreamPlayer" parent="."]
 volume_db = -12.885
