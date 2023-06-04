@@ -604,12 +604,14 @@ text = "Time to next hour: ?"
 label_settings = ExtResource("7_tdkjq")
 
 [node name="Quicktime" type="Button" parent="HUD"]
+visible = false
 offset_left = 668.0
 offset_top = 410.0
 offset_right = 1074.0
 offset_bottom = 524.0
 
 [node name="QuickText" type="Label" parent="HUD"]
+visible = false
 offset_left = 688.0
 offset_top = 428.0
 offset_right = 1045.0
